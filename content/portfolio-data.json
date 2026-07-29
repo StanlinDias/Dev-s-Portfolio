@@ -1,0 +1,128 @@
+{
+  "stats": [
+    { "type": "counter", "value": 6, "suffix": " yrs", "label": "in AI & ML" },
+    { "type": "counter", "value": 25, "suffix": "+", "label": "AI engineers led (grown from a team of 5)" },
+    { "type": "counter", "value": 5, "suffix": "+", "label": "products shipped from idea to paying customer" },
+    { "type": "dial", "value": 87, "max": 100, "unit": "%", "label": "accuracy, most accurate US housing forecast of 2023" }
+  ],
+
+  "trajectory": [
+    { "role": "Sr. Data Scientist, Home.LLC", "period": "Jan 2021 – Mar 2023", "teamSize": 5 },
+    { "role": "Founding Engineer & Head of AI, 100x.inc", "period": "Oct 2024 – Nov 2025", "teamSize": 12 },
+    { "role": "Lead – AI, 2SD Technologies", "period": "Nov 2025 – present", "teamSize": 25 }
+  ],
+
+  "industryTags": ["Government", "Pharma", "Retail", "Real estate", "Defence"],
+
+  "caseStudies": [
+    {
+      "tag": "Defence",
+      "title": "Sovereign AI for national defence",
+      "summary": "Currently building secure, air-gapped AI systems with the Indian government for the Army and Navy — predictive maintenance, threat detection, sovereign models trained without any data leaving controlled infrastructure.",
+      "bullets": ["Sovereign, air-gapped model training for defence use cases", "Predictive maintenance and threat detection systems", "Grew the delivery team from 5 to 25+", "Built the internal training system the company still uses"],
+      "confidential": true
+    },
+    {
+      "tag": "Real estate",
+      "title": "Conversational AI agents: Sasha & Selina",
+      "summary": "Architected two production AI agents — Sasha for real-time sales objection handling, Selina with hyper-local insights across 33,000+ US neighborhoods. Scaled to $50K+ MRR.",
+      "bullets": ["Sasha: AI sales agent with real-time objection handling", "Selina: hyper-personalised neighborhood data for 33,000+ zip codes", "25% increase in qualified lead conversion via RAG and fine-tuning", "Full product lifecycle from concept to $50K+ MRR"]
+    },
+    {
+      "tag": "Pharma",
+      "title": "Life-critical supply chain optimisation",
+      "summary": "Built an algorithmic system for a UK pharma manufacturer producing last-stage cancer injections with a 3-day half-life, where delivery delays are life-threatening.",
+      "bullets": ["End-to-end optimisation of manufacturing planning and shipment logistics", "AI-powered flagging for preemptive risk identification", "Real-time monitoring from production facility to patient delivery", "Scheduling that accounts for half-life constraints and demand patterns"]
+    },
+    {
+      "tag": "Retail",
+      "title": "AI-powered inventory management at scale",
+      "summary": "Replaced a 10-person manual team with an AI agent for a UK retailer operating 22+ stores and 5 warehouses.",
+      "bullets": ["Centralised data pipeline across 22+ stores and 5 warehouses", "AI agent for demand forecasting and inventory recommendations", "Automated replenishment planning, eliminating manual error", "$65K monthly cost reduction"]
+    },
+    {
+      "tag": "Government",
+      "title": "24/7 government service automation",
+      "summary": "Deployed a voice AI agent for a government entity in Oman, turning 12-hour manual operations into round-the-clock automated service.",
+      "bullets": ["Voice AI handling 200+ enquiries daily in Arabic and English", "Expanded from 12-hour to always-on 24/7 operations", "Replaced a 10-person customer service team", "Saved 20,000+ Omani Riyals per month"]
+    },
+    {
+      "tag": "Pharma",
+      "title": "Pharma master data management",
+      "summary": "Automated golden record creation and entity resolution across 5 to 7 disparate datasets for a pharmaceutical company.",
+      "bullets": ["Entity resolution across 5–7 different data sources", "AI-powered matching for automated golden record creation", "Automated deduplication and cross-dataset reconciliation", "Scalable MDM pipeline for ongoing data governance"]
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "2SD Technologies Limited",
+      "role": "Lead – Artificial Intelligence",
+      "period": "Nov 2025 – present",
+      "current": true,
+      "bullets": [
+        "Built AI systems for Fortune 500 clients across Europe and the US, including ZS Associates and Domino's UK, owning delivery from first conversation to deployment",
+        "Now working with the Indian government on sovereign AI for defence — predictive maintenance, threat detection, secure AI for the Army and Navy",
+        "Grew the AI team from 5 to 25+",
+        "Built the training system the company still uses",
+        "Shipped 5+ new products from idea to paying customer"
+      ]
+    },
+    {
+      "company": "100x.inc",
+      "role": "Founding Engineer & Head of Artificial Intelligence",
+      "period": "Oct 2024 – Nov 2025",
+      "bullets": [
+        "Built and shipped two conversational AI agents, Sasha (sales) and Selina (real estate), delivering personalised insights across 33,000+ US neighborhoods",
+        "Built the AWS infrastructure (SageMaker, Lambda, CI/CD) running RAG agents at scale",
+        "Led a 12-person cross-functional team, owning clients end to end",
+        "Grew qualified lead conversion 25%"
+      ]
+    },
+    {
+      "company": "Home.LLC",
+      "role": "AI & Analytics Manager",
+      "period": "Apr 2023 – Sep 2024",
+      "bullets": [
+        "Closed 2 AI consulting projects, adding $40K+ in new monthly recurring revenue",
+        "Built the entire digital home-buying experience end to end, powered by the analytics built previously"
+      ]
+    },
+    {
+      "company": "Home.LLC",
+      "role": "Sr. Data Scientist",
+      "period": "Jan 2021 – Mar 2023",
+      "bullets": [
+        "Led a team of 5 data scientists analysing economic, demographic, and housing data across 33,000 US zip codes",
+        "Built a model predicting home price growth in 100 major markets, 87% accurate",
+        "Published the most accurate US housing market forecast for 2023"
+      ]
+    }
+  ],
+
+  "stack": [
+    { "group": "LLM & agentic AI", "items": ["Retrieval-augmented generation", "LangChain & LangGraph", "LLM fine-tuning (LoRA/QLoRA)", "Vector DBs (Pinecone, Chroma)", "TTS & STT", "Prompt engineering"] },
+    { "group": "Cloud & MLOps", "items": ["AWS SageMaker & Lambda", "Docker & Kubernetes", "CI/CD pipelines", "FastAPI & Flask", "MLflow", "Terraform"] },
+    { "group": "Data science & ML", "items": ["Python & SQL", "PyTorch & TensorFlow", "Scikit-learn", "Tableau & Power BI", "Apache Spark", "A/B testing"] },
+    { "group": "Leadership", "items": ["System architecture", "Technical leadership", "Agile / Scrum", "Stakeholder management", "P&L ownership", "Cross-functional teams"] }
+  ],
+
+  "accomplishments": [
+    {
+      "title": "The Uber hack",
+      "body": "Uber kept surging near my college, so I started saving drivers' numbers after every ride. Eventually I had a WhatsApp group of 40-something drivers, plus my friends. Need a ride? Text the group. No surge, no app fee, and drivers liked it because they got a guaranteed ride when free."
+    },
+    {
+      "title": "Beating Wall Street at its own game",
+      "body": "Built a housing market model that became the most accurate prediction in the US for 2023 — beating economists, banks, and financial publications by a wide margin, off by just a few basis points. Covered by ResiClub and Fortune."
+    },
+    {
+      "title": "Built before",
+      "body": "Head of AI twice — currently at 2SD Technologies on sovereign defence AI for the Indian Army and Navy. Before that, built a CRM intelligence platform end to end for one of the world's biggest cost-consulting firms, and ran major AI projects for Domino's, Era Group, and ZS. All under client NDAs."
+    },
+    {
+      "title": "Awards & publications",
+      "body": "Work featured in Fortune, Forbes, ResiClub, and WSJ. Published \"E-Commerce Adoption by Service MSMEs,\" recognised at the 3rd National Conference on Sustainable Agricultural Development for Food Security and Nutrition. Gold medal two years running, and again as top performer at current organisation."
+    }
+  ]
+}

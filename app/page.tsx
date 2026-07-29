@@ -1,65 +1,131 @@
-import Image from "next/image";
+import Button from "@/components/Button";
+import Section from "@/components/Section";
+import StatCounter from "@/components/StatCounter";
+import StatDial from "@/components/StatDial";
+import ScrollZoomReveal from "@/components/ScrollZoomReveal";
+import TrajectoryChart from "@/components/TrajectoryChart";
+import CaseStudyGrid from "@/components/CaseStudyGrid";
+import Timeline from "@/components/Timeline";
+import StackGrid from "@/components/StackGrid";
+import AccomplishmentList from "@/components/AccomplishmentList";
+import data from "@/content/portfolio-data.json";
+
+function ProofStrip() {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 w-full max-w-5xl px-6">
+      {data.stats.map((stat) =>
+        stat.type === "counter" ? (
+          <StatCounter
+            key={stat.label}
+            value={stat.value}
+            suffix={stat.suffix}
+            label={stat.label}
+          />
+        ) : (
+          <StatDial
+            key={stat.label}
+            value={stat.value}
+            max={stat.max ?? 100}
+            unit={stat.unit ?? ""}
+            label={stat.label}
+          />
+        )
+      )}
+    </div>
+  );
+}
+
+function NowBuildingPanel() {
+  return (
+    <div id="now-building" className="max-w-2xl px-6 text-center md:text-left flex flex-col gap-6 items-center md:items-start">
+      <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
+        now building
+      </p>
+      <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text">
+        Vibe code your own private &amp; affordable LLM.
+      </h2>
+      <p className="text-text-muted text-base md:text-lg">
+        Xantyr turns a company&apos;s own data into a specialised model it owns
+        outright, in three steps — structure the data, fine-tune it, deploy it —
+        no ML team required. I&apos;m the technical co-founder; I write the code.
+      </p>
+      <Button variant="primary" href="https://xantyr.com" label="Visit xantyr.com ▸" />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <section id="hero" className="px-6 md:px-12 py-32 md:py-40 max-w-6xl mx-auto flex flex-col gap-8">
+        <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
+          cto · xantyr · ai architect
+        </p>
+        <h1 className="text-4xl md:text-6xl font-medium tracking-tight text-text max-w-4xl leading-[1.1]">
+          Six years building AI that enterprises actually trust.
+        </h1>
+        <p className="text-text-muted text-base md:text-lg max-w-2xl">
+          I&apos;ve fine-tuned models for individuals and Fortune 500s, shipped
+          production AI across pharma, retail, real estate, and government — and
+          I&apos;m now building the platform that lets any business own its model
+          the same way.
+        </p>
+        <div className="flex flex-wrap gap-4 mt-2">
+          <Button variant="primary" href="https://xantyr.com" label="See what I'm building" />
+          <Button variant="secondary" href="#work" label="View case studies" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+      </section>
+
+      <ScrollZoomReveal
+        className="border-t border-border"
+        from={<ProofStrip />}
+        to={<NowBuildingPanel />}
+        cascadeLines={["now building", "the platform.", "xantyr."]}
+      />
+
+      <Section id="trajectory" eyebrow="the trajectory" title="From a team of 5 to leading 25+.">
+        <TrajectoryChart points={data.trajectory} />
+      </Section>
+
+      <Section id="work" eyebrow="selected work" title="Case studies that moved the needle.">
+        <CaseStudyGrid items={data.caseStudies} tags={data.industryTags} />
+      </Section>
+
+      <Section id="experience" eyebrow="experience" title="A trajectory built on compounding impact.">
+        <Timeline items={data.experience} />
+      </Section>
+
+      <Section id="stack" eyebrow="technical stack" title="Deep across the full AI stack.">
+        <StackGrid groups={data.stack} />
+      </Section>
+
+      <Section id="accomplishments" eyebrow="off the resume" title="Things that don't fit in a bullet point.">
+        <AccomplishmentList items={data.accomplishments} />
+      </Section>
+
+      <section id="contact" className="px-6 md:px-12 py-24 md:py-32 max-w-6xl mx-auto border-t border-border flex flex-col gap-6">
+        <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl">
+          Building Xantyr. Always happy to talk shop.
+        </h2>
+        <p className="text-text-muted text-base md:text-lg max-w-2xl">
+          I&apos;m full-time on Xantyr now, so I&apos;m not taking on consulting
+          work — but I&apos;m glad to talk AI, defence-grade infrastructure, or
+          anything hard and technical.
+        </p>
+        <div className="flex flex-wrap gap-6 font-mono text-sm uppercase tracking-wider mt-2">
+          <a href="mailto:dev@xantyr.com" className="text-accent hover:text-accent-hover">
+            dev@xantyr.com
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://www.linkedin.com/in/dev-seth-840774185/"
             target="_blank"
             rel="noopener noreferrer"
+            className="text-text-muted hover:text-accent"
           >
-            Documentation
+            LinkedIn
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
