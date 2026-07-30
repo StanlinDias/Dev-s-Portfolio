@@ -80,7 +80,7 @@ export default function ScrollZoomReveal({
   });
 
   const fromScale = useTransform(scrollYProgress, [0.3, 0.5], [1, fromZoomScale]);
-  const fromOpacity = useTransform(scrollYProgress, [0.3, 0.5], [1, fadeFloor]);
+  const fromOpacity = useTransform(scrollYProgress, [0.3, 0.5, 0.68], [1, fadeFloor, 0]);
   const toScale = useTransform(scrollYProgress, [0.5, 0.7], [0.85, 1]);
   const toOpacity = useTransform(scrollYProgress, [0.5, 0.65], [0, 1]);
 

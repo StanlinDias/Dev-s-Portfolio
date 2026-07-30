@@ -117,16 +117,16 @@ export default function Home() {
         className="border-t border-border"
         from={<ProofStrip />}
         to={<NowBuildingPanel />}
-        cascadeLines={["now building", "the platform.", "xantyr."]}
+        cascadeLines={["the platform.", "xantyr."]}
       />
 
       <ScrollZoomReveal
         className="border-t border-border"
         from={<NowBuildingPanel />}
         to={<TrajectoryTeaser />}
-        cascadeLines={["the trajectory", "5 to 25+.", "and counting."]}
+        cascadeLines={["5 to 25+.", "and counting."]}
         fromZoomScale={1.9}
-        fadeFloor={0.3}
+        fadeFloor={0.15}
       />
 
       <div id="trajectory" className="px-6 md:px-12 pb-20 md:pb-32 max-w-6xl mx-auto">
