@@ -72,19 +72,6 @@ function NowBuildingPanel() {
   );
 }
 
-function TrajectoryTeaser() {
-  return (
-    <div className="max-w-2xl px-6 text-center flex flex-col gap-4 items-center">
-      <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
-        the trajectory
-      </p>
-      <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text">
-        From a team of 5 to leading 25+.
-      </h2>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <>
@@ -120,18 +107,9 @@ export default function Home() {
         cascadeLines={["the platform.", "xantyr."]}
       />
 
-      <ScrollZoomReveal
-        className="border-t border-border"
-        from={<NowBuildingPanel />}
-        to={<TrajectoryTeaser />}
-        cascadeLines={["5 to 25+.", "and counting."]}
-        fromZoomScale={1.9}
-        fadeFloor={0.15}
-      />
-
-      <div id="trajectory" className="px-6 md:px-12 pb-12 md:pb-20 max-w-6xl mx-auto">
+      <Section id="trajectory" eyebrow="the trajectory" title="From a team of 5 to leading 25+.">
         <TrajectoryChart points={data.trajectory} />
-      </div>
+      </Section>
 
       <CaseStudyGrid items={data.caseStudies} tags={data.industryTags} />
 
