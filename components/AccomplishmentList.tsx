@@ -1,3 +1,8 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+
 type Accomplishment = {
   title: string;
   body: string;
@@ -8,27 +13,41 @@ type AccomplishmentListProps = {
 };
 
 export default function AccomplishmentList({ items }: AccomplishmentListProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="flex flex-col border-t border-border">
       {items.map((item, i) => {
-        const isPullQuote = i === 1;
+        const isOpen = openIndex === i;
         return (
-          <div
-            key={item.title}
-            className={`border border-border p-6 md:p-8 flex flex-col ${
-              isPullQuote ? "md:col-span-2 bg-accent/[0.04]" : ""
-            }`}
-          >
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-4">
-              {item.title}
-            </p>
-            {isPullQuote ? (
-              <p className="font-serif italic text-2xl md:text-3xl leading-snug text-text max-w-3xl">
-                {item.body}
-              </p>
-            ) : (
-              <p className="text-sm md:text-base text-text-muted">{item.body}</p>
-            )}
+          <div key={item.title} className="border-b border-border">
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              className="w-full flex items-center justify-between gap-6 py-5 text-left group"
+            >
+              <span className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent group-hover:text-accent-hover transition-colors">
+                {item.title}
+              </span>
+              <span className="font-mono text-lg text-text-muted shrink-0">
+                {isOpen ? "−" : "+"}
+              </span>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="text-sm md:text-base text-text-muted max-w-3xl pb-6">
+                    {item.body}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         );
       })}

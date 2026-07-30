@@ -66,7 +66,7 @@ export default function CaseStudyGrid({ items, tags }: CaseStudyGridProps) {
   return (
     <section
       id="work"
-      className="relative overflow-hidden bg-[#0a0a0b] px-6 md:px-12 py-20 md:py-32"
+      className="relative overflow-hidden bg-[#0a0a0b] px-6 md:px-12 py-12 md:py-20"
     >
       <div className="pointer-events-none absolute -top-32 -left-20 w-[420px] h-[420px] rounded-full bg-accent/30 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 w-[360px] h-[360px] rounded-full bg-accent-hover/20 blur-[110px]" />

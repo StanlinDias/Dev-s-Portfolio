@@ -88,7 +88,7 @@ function TrajectoryTeaser() {
 export default function Home() {
   return (
     <>
-      <section id="hero" className="relative px-6 md:px-12 py-32 md:py-40 max-w-6xl mx-auto">
+      <section id="hero" className="relative px-6 md:px-12 py-20 md:py-28 max-w-6xl mx-auto">
         <div className="pointer-events-auto absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
           <Globe size={420} />
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
         fadeFloor={0.15}
       />
 
-      <div id="trajectory" className="px-6 md:px-12 pb-20 md:pb-32 max-w-6xl mx-auto">
+      <div id="trajectory" className="px-6 md:px-12 pb-12 md:pb-20 max-w-6xl mx-auto">
         <TrajectoryChart points={data.trajectory} />
       </div>
 
@@ -147,7 +147,7 @@ export default function Home() {
         <AccomplishmentList items={data.accomplishments} />
       </Section>
 
-      <section id="contact" className="px-6 md:px-12 py-24 md:py-32 max-w-6xl mx-auto border-t border-border flex flex-col gap-6">
+      <section id="contact" className="px-6 md:px-12 py-16 md:py-24 max-w-6xl mx-auto border-t border-border flex flex-col gap-6">
         <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl">
           Building Xantyr. Always happy to talk shop.
         </h2>
