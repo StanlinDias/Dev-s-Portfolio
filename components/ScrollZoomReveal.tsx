@@ -8,6 +8,8 @@ type ScrollZoomRevealProps = {
   to: ReactNode;
   cascadeLines?: string[];
   className?: string;
+  fromZoomScale?: number;
+  fadeFloor?: number;
 };
 
 function CascadeLine({
@@ -38,23 +40,23 @@ function CascadeLine({
 function ReticleFrame({ progress }: { progress: ReturnType<typeof useTransform<number, number>> }) {
   const scale = useTransform(progress, [0, 0.5, 1], [1, 0.9, 1]);
   const opacity = useTransform(progress, [0, 0.15, 0.85, 1], [0, 1, 1, 1]);
-  const size = 24;
+  const size = 44;
 
   return (
     <motion.div
-      className="pointer-events-none absolute inset-6 md:inset-10"
+      className="pointer-events-none absolute inset-4 md:inset-8"
       style={{ scale, opacity }}
     >
       {[
-        "top-0 left-0 border-t border-l",
-        "top-0 right-0 border-t border-r",
-        "bottom-0 left-0 border-b border-l",
-        "bottom-0 right-0 border-b border-r",
+        "top-0 left-0 border-t-[3px] border-l-[3px]",
+        "top-0 right-0 border-t-[3px] border-r-[3px]",
+        "bottom-0 left-0 border-b-[3px] border-l-[3px]",
+        "bottom-0 right-0 border-b-[3px] border-r-[3px]",
       ].map((pos) => (
         <span
           key={pos}
           className={`absolute ${pos} border-accent`}
-          style={{ width: size, height: size }}
+          style={{ width: size, height: size, filter: "drop-shadow(0 0 6px var(--accent))" }}
         />
       ))}
     </motion.div>
@@ -66,6 +68,8 @@ export default function ScrollZoomReveal({
   to,
   cascadeLines,
   className = "",
+  fromZoomScale = 1.4,
+  fadeFloor = 0,
 }: ScrollZoomRevealProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -75,8 +79,8 @@ export default function ScrollZoomReveal({
     offset: ["start end", "end start"],
   });
 
-  const fromScale = useTransform(scrollYProgress, [0.3, 0.5], [1, 1.4]);
-  const fromOpacity = useTransform(scrollYProgress, [0.3, 0.5], [1, 0]);
+  const fromScale = useTransform(scrollYProgress, [0.3, 0.5], [1, fromZoomScale]);
+  const fromOpacity = useTransform(scrollYProgress, [0.3, 0.5], [1, fadeFloor]);
   const toScale = useTransform(scrollYProgress, [0.5, 0.7], [0.85, 1]);
   const toOpacity = useTransform(scrollYProgress, [0.5, 0.65], [0, 1]);
 

@@ -60,6 +60,7 @@
       "role": "Lead – Artificial Intelligence",
       "period": "Nov 2025 – present",
       "current": true,
+      "oneLiner": "Grew the team 5x to 25+, now building sovereign AI for the Indian Army and Navy.",
       "bullets": [
         "Built AI systems for Fortune 500 clients across Europe and the US, including ZS Associates and Domino's UK, owning delivery from first conversation to deployment",
         "Now working with the Indian government on sovereign AI for defence — predictive maintenance, threat detection, secure AI for the Army and Navy",
@@ -72,6 +73,7 @@
       "company": "100x.inc",
       "role": "Founding Engineer & Head of Artificial Intelligence",
       "period": "Oct 2024 – Nov 2025",
+      "oneLiner": "Built Sasha and Selina from scratch, led a 12-person team shipping RAG agents at scale.",
       "bullets": [
         "Built and shipped two conversational AI agents, Sasha (sales) and Selina (real estate), delivering personalised insights across 33,000+ US neighborhoods",
         "Built the AWS infrastructure (SageMaker, Lambda, CI/CD) running RAG agents at scale",
@@ -83,6 +85,7 @@
       "company": "Home.LLC",
       "role": "AI & Analytics Manager",
       "period": "Apr 2023 – Sep 2024",
+      "oneLiner": "Turned the research into product — closed $40K+ in new AI consulting revenue.",
       "bullets": [
         "Closed 2 AI consulting projects, adding $40K+ in new monthly recurring revenue",
         "Built the entire digital home-buying experience end to end, powered by the analytics built previously"
@@ -92,6 +95,7 @@
       "company": "Home.LLC",
       "role": "Sr. Data Scientist",
       "period": "Jan 2021 – Mar 2023",
+      "oneLiner": "Led five data scientists, built the model that called the 2023 housing market better than Wall Street.",
       "bullets": [
         "Led a team of 5 data scientists analysing economic, demographic, and housing data across 33,000 US zip codes",
         "Built a model predicting home price growth in 100 major markets, 87% accurate",
