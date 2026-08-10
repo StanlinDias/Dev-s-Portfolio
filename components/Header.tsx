@@ -7,7 +7,6 @@ const NAV_ITEMS = [
   { label: "About", href: "#hero" },
   { label: "Work", href: "#work" },
   { label: "Building Xantyr", href: "#now-building" },
-  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 

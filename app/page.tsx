@@ -5,7 +5,6 @@ import StatDial from "@/components/StatDial";
 import ScrollZoomReveal from "@/components/ScrollZoomReveal";
 import TrajectoryChart from "@/components/TrajectoryChart";
 import CaseStudyGrid from "@/components/CaseStudyGrid";
-import JourneyTimeline from "@/components/JourneyTimeline";
 import StackGrid from "@/components/StackGrid";
 import AccomplishmentList from "@/components/AccomplishmentList";
 import Globe from "@/components/Globe";
@@ -112,10 +111,6 @@ export default function Home() {
       </Section>
 
       <CaseStudyGrid items={data.caseStudies} tags={data.industryTags} />
-
-      <Section id="experience" eyebrow="experience" title="A trajectory built on compounding impact.">
-        <JourneyTimeline items={data.experience} />
-      </Section>
 
       <Section id="stack" eyebrow="technical stack" title="Deep across the full AI stack.">
         <StackGrid groups={data.stack} />

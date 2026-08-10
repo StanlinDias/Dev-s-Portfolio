@@ -3,7 +3,6 @@ const SITEMAP = [
   { label: "Work", href: "#work" },
   { label: "Building Xantyr", href: "#now-building" },
   { label: "Trajectory", href: "#trajectory" },
-  { label: "Experience", href: "#experience" },
   { label: "Stack", href: "#stack" },
   { label: "Contact", href: "#contact" },
 ];
