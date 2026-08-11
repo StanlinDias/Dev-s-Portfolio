@@ -74,7 +74,7 @@ function NowBuildingPanel() {
 export default function Home() {
   return (
     <>
-      <section id="hero" className="relative px-6 md:px-12 py-20 md:py-28 max-w-6xl mx-auto">
+      <section id="hero" className="relative min-h-dvh flex items-center px-6 md:px-12 py-20 md:py-28 max-w-6xl mx-auto">
         <div className="pointer-events-auto absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
           <Globe size={420} />
         </div>

@@ -107,10 +107,7 @@ export default function CaseStudyGrid({ items, tags }: CaseStudyGridProps) {
           ))}
         </div>
 
-        <div
-          className="grid grid-cols-1 sm:grid-cols-4 gap-5"
-          style={{ gridAutoFlow: "dense", gridAutoRows: "180px" }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-5 auto-rows-auto sm:auto-rows-[180px] [grid-auto-flow:dense]">
           <AnimatePresence>
             {filtered.map((item, i) => {
               const isOpen = expanded === item.title;
