@@ -3,6 +3,7 @@ import { JetBrains_Mono, Newsreader, Sintony } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SHOW_XANTYR } from "@/lib/flags";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -22,9 +23,10 @@ const sintony = Sintony({
 });
 
 export const metadata: Metadata = {
-  title: "Dev Seth — AI architect, CTO of Xantyr",
-  description:
-    "Six years building AI that enterprises actually trust. Now building Xantyr.",
+  title: SHOW_XANTYR ? "Dev Seth — AI architect, CTO of Xantyr" : "Dev Seth — Chief AI Architect",
+  description: SHOW_XANTYR
+    ? "7 years building AI that enterprises actually trust. Now building Xantyr."
+    : "7 years building AI that enterprises actually trust.",
 };
 
 export default function RootLayout({

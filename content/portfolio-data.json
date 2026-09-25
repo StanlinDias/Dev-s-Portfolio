@@ -1,6 +1,6 @@
 {
   "stats": [
-    { "type": "counter", "value": 6, "suffix": " yrs", "label": "in AI & ML" },
+    { "type": "counter", "value": 7, "suffix": " yrs", "label": "in AI & ML" },
     { "type": "counter", "value": 25, "suffix": "+", "label": "AI engineers led (grown from a team of 5)" },
     { "type": "counter", "value": 5, "suffix": "+", "label": "products shipped from idea to paying customer" },
     { "type": "dial", "value": 87, "max": 100, "unit": "%", "label": "accuracy, most accurate US housing forecast of 2023" }
@@ -62,7 +62,7 @@
       "current": true,
       "oneLiner": "Grew the team 5x to 25+, now building sovereign AI for the Indian Army and Navy.",
       "bullets": [
-        "Built AI systems for Fortune 500 clients across Europe and the US, including ZS Associates and Domino's UK, owning delivery from first conversation to deployment",
+        "Built AI systems for global enterprise clients across Europe and the US, including ZS Associates and Domino's UK, owning delivery from first conversation to deployment",
         "Now working with the Indian government on sovereign AI for defence — predictive maintenance, threat detection, secure AI for the Army and Navy",
         "Grew the AI team from 5 to 25+",
         "Built the training system the company still uses",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducedMotion, useScroll, useTransform, motion, useMotionValueEvent } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type StatCounterProps = {
   value: number;
@@ -13,7 +13,10 @@ type StatCounterProps = {
 export default function StatCounter({ value, prefix = "", suffix = "", label }: StatCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const [display, setDisplay] = useState(reduceMotion ? value : 0);
+  // Server and first paint always show the real value, so it's present in
+  // the rendered HTML for crawlers/link previews. Once mounted, sync to the
+  // actual scroll-derived count (0 if not yet scrolled into range).
+  const [display, setDisplay] = useState(value);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -21,6 +24,11 @@ export default function StatCounter({ value, prefix = "", suffix = "", label }: 
   });
 
   const count = useTransform(scrollYProgress, [0, 1], [0, value]);
+
+  useEffect(() => {
+    if (!reduceMotion) setDisplay(Math.round(count.get()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useMotionValueEvent(count, "change", (latest) => {
     if (!reduceMotion) setDisplay(Math.round(latest));

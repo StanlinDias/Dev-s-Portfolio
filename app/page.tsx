@@ -10,6 +10,7 @@ import AccomplishmentList from "@/components/AccomplishmentList";
 import Globe from "@/components/Globe";
 import TiltCard from "@/components/TiltCard";
 import data from "@/content/portfolio-data.json";
+import { SHOW_XANTYR } from "@/lib/flags";
 
 function ProofStrip() {
   return (
@@ -81,30 +82,40 @@ export default function Home() {
 
         <div className="relative flex flex-col gap-8 max-w-2xl">
           <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
-            cto · xantyr · ai architect
+            {SHOW_XANTYR ? "cto · xantyr · ai architect" : "chief ai architect · model engineering"}
           </p>
           <h1 className="text-4xl md:text-6xl font-medium tracking-tight text-text max-w-4xl leading-[1.1]">
-            Six years building AI that enterprises actually trust.
+            7 years building AI that enterprises actually trust.
           </h1>
           <p className="text-text-muted text-base md:text-lg max-w-2xl">
-            I&apos;ve fine-tuned models for individuals and Fortune 500s, shipped
-            production AI across pharma, retail, real estate, and government — and
-            I&apos;m now building the platform that lets any business own its model
-            the same way.
+            {SHOW_XANTYR
+              ? "I've fine-tuned models for individuals and Fortune 500s, shipped production AI across pharma, retail, real estate, and government — and I'm now building the platform that lets any business own its model the same way."
+              : "I've fine-tuned models for individuals and enterprises, shipped production AI across pharma, retail, real estate, defence and government — and I build and deploy private models end to end, from data to on-prem serving."}
           </p>
           <div className="flex flex-wrap gap-4 mt-2">
-            <Button variant="primary" href="https://xantyr.com" label="See what I'm building" />
+            {SHOW_XANTYR ? (
+              <Button variant="primary" href="https://xantyr.com" label="See what I'm building" />
+            ) : (
+              // TODO: point to /private-models once that page ships (plan Phase 5).
+              <Button variant="primary" href="#work" label="See how I build private models" />
+            )}
             <Button variant="secondary" href="#work" label="View case studies" />
           </div>
         </div>
       </section>
 
-      <ScrollZoomReveal
-        className="border-t border-border"
-        from={<ProofStrip />}
-        to={<NowBuildingPanel />}
-        cascadeLines={["the platform.", "xantyr."]}
-      />
+      {SHOW_XANTYR ? (
+        <ScrollZoomReveal
+          className="border-t border-border"
+          from={<ProofStrip />}
+          to={<NowBuildingPanel />}
+          cascadeLines={["the platform.", "xantyr."]}
+        />
+      ) : (
+        <div className="border-t border-border py-16 md:py-24 flex items-center justify-center">
+          <ProofStrip />
+        </div>
+      )}
 
       <Section id="trajectory" eyebrow="the trajectory" title="From a team of 5 to leading 25+.">
         <TrajectoryChart points={data.trajectory} />
@@ -122,15 +133,15 @@ export default function Home() {
 
       <section id="contact" className="px-6 md:px-12 py-16 md:py-24 max-w-6xl mx-auto border-t border-border flex flex-col gap-6">
         <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl">
-          Building Xantyr. Always happy to talk shop.
+          {SHOW_XANTYR ? "Building Xantyr. Always happy to talk shop." : "Building private AI. Always happy to talk shop."}
         </h2>
         <p className="text-text-muted text-base md:text-lg max-w-2xl">
           Ready to connect — always up for a conversation about AI, defence-grade
           infrastructure, or anything hard and technical.
         </p>
         <div className="flex flex-wrap gap-6 font-mono text-sm uppercase tracking-wider mt-2">
-          <a href="mailto:dev@xantyr.com" className="text-accent hover:text-accent-hover">
-            dev@xantyr.com
+          <a href="mailto:devseth34@gmail.com" className="text-accent hover:text-accent-hover">
+            devseth34@gmail.com
           </a>
           <a
             href="https://www.linkedin.com/in/dev-seth-840774185/"

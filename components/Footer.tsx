@@ -1,7 +1,9 @@
+import { SHOW_XANTYR } from "@/lib/flags";
+
 const SITEMAP = [
   { label: "About", href: "#hero" },
   { label: "Work", href: "#work" },
-  { label: "Building Xantyr", href: "#now-building" },
+  ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "#now-building" }] : []),
   { label: "Trajectory", href: "#trajectory" },
   { label: "Stack", href: "#stack" },
   { label: "Contact", href: "#contact" },
@@ -14,7 +16,9 @@ export default function Footer() {
         <div>
           <p className="font-mono text-sm tracking-[0.15em] uppercase mb-2">Dev Seth</p>
           <p className="text-text-muted text-sm max-w-xs">
-            CTO &amp; co-founder, Xantyr. Building AI enterprises actually trust.
+            {SHOW_XANTYR
+              ? "CTO & co-founder, Xantyr. Building AI enterprises actually trust."
+              : "Chief AI Architect. Building AI enterprises actually trust."}
           </p>
         </div>
 
@@ -35,8 +39,8 @@ export default function Footer() {
           >
             LinkedIn
           </a>
-          <a href="mailto:dev@xantyr.com" className="hover:text-accent transition-colors">
-            dev@xantyr.com
+          <a href="mailto:devseth34@gmail.com" className="hover:text-accent transition-colors">
+            devseth34@gmail.com
           </a>
         </div>
       </div>

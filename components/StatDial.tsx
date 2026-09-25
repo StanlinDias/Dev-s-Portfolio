@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducedMotion, useScroll, useTransform, motion, useMotionValueEvent } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type StatDialProps = {
   value: number;
@@ -20,7 +20,9 @@ export default function StatDial({ value, max, unit, label, sub }: StatDialProps
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const ratio = Math.min(Math.max(value / max, 0), 1);
-  const [display, setDisplay] = useState(reduceMotion ? value : 0);
+  // Server and first paint show the real value so it's present for
+  // crawlers/link previews; sync to the true scroll-derived value post-mount.
+  const [display, setDisplay] = useState(value);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -31,6 +33,11 @@ export default function StatDial({ value, max, unit, label, sub }: StatDialProps
   const dashoffset = useTransform(progress, (p) => ARC_LENGTH * (1 - p));
   const rotation = useTransform(progress, (p) => -90 + p * 180);
   const count = useTransform(progress, (p) => Math.round(p * max));
+
+  useEffect(() => {
+    if (!reduceMotion) setDisplay(count.get());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useMotionValueEvent(count, "change", (latest) => {
     if (!reduceMotion) setDisplay(latest);

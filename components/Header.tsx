@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { SHOW_XANTYR } from "@/lib/flags";
 
 const NAV_ITEMS = [
   { label: "About", href: "#hero" },
   { label: "Work", href: "#work" },
-  { label: "Building Xantyr", href: "#now-building" },
+  ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "#now-building" }] : []),
   { label: "Contact", href: "#contact" },
 ];
 

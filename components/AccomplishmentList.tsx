@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 type Accomplishment = {
@@ -19,10 +18,13 @@ export default function AccomplishmentList({ items }: AccomplishmentListProps) {
     <div className="flex flex-col border-t border-border">
       {items.map((item, i) => {
         const isOpen = openIndex === i;
+        const panelId = `accomplishment-panel-${i}`;
         return (
           <div key={item.title} className="border-b border-border">
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
+              aria-expanded={isOpen}
+              aria-controls={panelId}
               className="w-full flex items-center justify-between gap-6 py-5 text-left group"
             >
               <span className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent group-hover:text-accent-hover transition-colors">
@@ -33,21 +35,19 @@ export default function AccomplishmentList({ items }: AccomplishmentListProps) {
               </span>
             </button>
 
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="overflow-hidden"
-                >
-                  <p className="text-sm md:text-base text-text-muted max-w-3xl pb-6">
-                    {item.body}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Body text is always in the DOM (SSR-visible) and collapsed
+                with a CSS grid-rows transition, not conditionally mounted. */}
+            <div
+              id={panelId}
+              className="grid transition-[grid-template-rows] duration-300 ease-out"
+              style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+            >
+              <div className="overflow-hidden">
+                <p className="text-sm md:text-base text-text-muted max-w-3xl pb-6">
+                  {item.body}
+                </p>
+              </div>
+            </div>
           </div>
         );
       })}

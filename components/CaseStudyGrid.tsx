@@ -136,44 +136,47 @@ export default function CaseStudyGrid({ items, tags }: CaseStudyGridProps) {
 
                   <button
                     onClick={() => setExpanded(isOpen ? null : item.title)}
+                    aria-expanded={isOpen}
+                    aria-controls={`case-study-detail-${i}`}
                     className="font-mono text-xs uppercase tracking-wider text-accent hover:text-accent-hover self-start mt-auto"
                   >
                     What I built +
                   </button>
 
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="absolute inset-0 z-10 flex flex-col rounded-2xl border border-white/15 bg-[#0a0a0b]/90 backdrop-blur-2xl p-6"
+                  {/* Bullets are always in the DOM (SSR-visible) and toggled
+                      with opacity/pointer-events, not conditionally mounted. */}
+                  <motion.div
+                    id={`case-study-detail-${i}`}
+                    aria-hidden={!isOpen}
+                    animate={{ opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className={`absolute inset-0 z-10 flex flex-col rounded-2xl border border-white/15 bg-[#0a0a0b]/90 backdrop-blur-2xl p-6 ${
+                      isOpen ? "pointer-events-auto" : "pointer-events-none"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                        {item.tag}
+                      </p>
+                      <button
+                        onClick={() => setExpanded(null)}
+                        tabIndex={isOpen ? 0 : -1}
+                        className="font-mono text-xs text-white/50 hover:text-white"
+                        aria-label="Close"
                       >
-                        <div className="flex items-start justify-between mb-3">
-                          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                            {item.tag}
-                          </p>
-                          <button
-                            onClick={() => setExpanded(null)}
-                            className="font-mono text-xs text-white/50 hover:text-white"
-                            aria-label="Close"
-                          >
-                            close ×
-                          </button>
-                        </div>
-                        <h3 className="text-lg font-medium text-white mb-3">{item.title}</h3>
-                        <ul className="flex flex-col gap-2 overflow-y-auto">
-                          {item.bullets.map((bullet) => (
-                            <li key={bullet} className="text-sm text-white/70 flex gap-2">
-                              <span className="text-accent">·</span>
-                              {bullet}
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        close ×
+                      </button>
+                    </div>
+                    <h3 className="text-lg font-medium text-white mb-3">{item.title}</h3>
+                    <ul className="flex flex-col gap-2 overflow-y-auto">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet} className="text-sm text-white/70 flex gap-2">
+                          <span className="text-accent">·</span>
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
                 </motion.div>
               );
             })}
