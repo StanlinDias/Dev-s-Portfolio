@@ -13,6 +13,8 @@ import TopologySwitcher from "@/components/TopologySwitcher";
 import CaseStudyGrid from "@/components/CaseStudyGrid";
 import FAQAccordion from "@/components/FAQAccordion";
 import GlossaryTerm from "@/components/GlossaryTerm";
+import BentoGrid from "@/components/BentoGrid";
+import SegmentReveal from "@/components/SegmentReveal";
 import data from "@/content/portfolio-data.json";
 
 export const metadata: Metadata = {
@@ -250,14 +252,7 @@ export default function PrivateModelsPage() {
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               Three reasons it&apos;s worth doing.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {WHY_PRIVATE.map((item) => (
-                <div key={item.title} className="border border-border p-6 flex flex-col gap-2">
-                  <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">{item.title}</h3>
-                  <p className="text-sm md:text-base text-text-muted">{item.body}</p>
-                </div>
-              ))}
-            </div>
+            <SegmentReveal items={WHY_PRIVATE} />
           </div>
 
           <div id="security" className="py-16 md:py-20 border-t border-border">
@@ -265,17 +260,13 @@ export default function PrivateModelsPage() {
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               Built to hold up under a security review.
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {SECURITY_CONTROLS.map((control) => (
-                <div key={control.title} className="border border-border p-5 flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-accent text-base leading-none">{control.glyph}</span>
-                    <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-text">{control.title}</h3>
-                  </div>
-                  <p className="text-sm text-text-muted">{control.teaser}</p>
-                </div>
-              ))}
-            </div>
+            <BentoGrid
+              items={SECURITY_CONTROLS.map((control) => ({
+                glyph: control.glyph,
+                title: control.title,
+                body: control.teaser,
+              }))}
+            />
           </div>
 
           <div id="decide" className="py-16 md:py-20 border-t border-border">
@@ -299,15 +290,14 @@ export default function PrivateModelsPage() {
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               What this looks like, built.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {NAMED_PROJECTS.map((project) => (
-                <div key={project.title} className="border border-border p-6 flex flex-col gap-2">
-                  <h3 className="text-lg font-medium text-text">{project.title}</h3>
-                  <p className="text-sm text-text-muted">{project.oneLiner}</p>
-                  <p className="text-xs text-text-muted mt-2">{project.problem}</p>
-                </div>
-              ))}
-            </div>
+            <BentoGrid
+              emphasizeFirst={false}
+              items={NAMED_PROJECTS.map((project) => ({
+                title: project.title,
+                body: project.oneLiner,
+                note: project.problem,
+              }))}
+            />
           </div>
         </div>
       </div>

@@ -9,6 +9,8 @@ import CaseStudyGrid from "@/components/CaseStudyGrid";
 import AnimatedChecklist from "@/components/AnimatedChecklist";
 import TimezoneOverlap from "@/components/TimezoneOverlap";
 import FAQAccordion from "@/components/FAQAccordion";
+import BentoGrid from "@/components/BentoGrid";
+import SegmentReveal from "@/components/SegmentReveal";
 import data from "@/content/portfolio-data.json";
 
 export const metadata: Metadata = {
@@ -194,15 +196,14 @@ export default function PartnersPage() {
         <p className="text-text-muted text-base md:text-lg max-w-2xl mb-10">
           From agentic systems to model fine-tuning and private deployment on AWS and Azure.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
-          {EXPERIENCE.map((role) => (
-            <div key={role.company + role.period} className="border border-border p-6 flex flex-col gap-2">
-              <p className="font-mono text-xs uppercase tracking-wider text-text-muted">{role.period}</p>
-              <h3 className="text-lg font-medium text-text">{role.role}</h3>
-              <p className="text-sm text-text-muted mb-2">{role.company}</p>
-              <p className="text-sm text-text-muted">{role.summary}</p>
-            </div>
-          ))}
+        <div className="mb-16">
+          <BentoGrid
+            items={EXPERIENCE.map((role) => ({
+              title: role.role,
+              body: role.summary,
+              note: `${role.company} · ${role.period}`,
+            }))}
+          />
         </div>
       </Section>
 
@@ -231,14 +232,13 @@ export default function PartnersPage() {
       </Section>
 
       <Section id="work-together" eyebrow="how we can work together" title="Three ways to partner.">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-          {WORK_TOGETHER.map((item) => (
-            <div key={item.title} className="border border-border p-6 flex flex-col gap-2">
-              <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-accent">{item.title}</h3>
-              <p className="text-sm md:text-base text-text-muted">{item.body}</p>
-              {item.note && <p className="text-xs text-text-muted mt-2">{item.note}</p>}
-            </div>
-          ))}
+        <div className="mb-10">
+          <SegmentReveal
+            items={WORK_TOGETHER.map((item) => ({
+              title: item.title,
+              body: item.note ? `${item.body} ${item.note}` : item.body,
+            }))}
+          />
         </div>
         <div className="border border-accent/40 bg-accent/[0.04] p-6 flex flex-col gap-2 max-w-2xl">
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">featured entry offer</p>
