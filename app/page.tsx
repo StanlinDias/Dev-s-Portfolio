@@ -95,8 +95,7 @@ export default function Home() {
             {SHOW_XANTYR ? (
               <Button variant="primary" href="https://xantyr.com" label="See what I'm building" />
             ) : (
-              // TODO: point to /private-models once that page ships (plan Phase 5).
-              <Button variant="primary" href="#work" label="See how I build private models" />
+              <Button variant="primary" href="/private-models" label="See how I build private models" />
             )}
             <Button variant="secondary" href="#work" label="View case studies" />
           </div>

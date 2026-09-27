@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export type ProcessStep = {
   number: string;
@@ -8,6 +8,8 @@ export type ProcessStep = {
   whatIDo: string;
   whatYouGet: string;
   tools?: string[];
+  /** Optional per-step interactive, rendered below the standard content. */
+  extra?: ReactNode;
 };
 
 type ProcessStepperProps = {
@@ -56,6 +58,7 @@ function MobileStep({ step, index }: { step: ProcessStep; index: number }) {
         <div className="overflow-hidden flex flex-col gap-3 pt-1">
           <p className="text-sm text-text-muted">{step.whatYouGet}</p>
           {step.tools && step.tools.length > 0 && <ToolChips tools={step.tools} />}
+          {step.extra && <div className="mt-2">{step.extra}</div>}
         </div>
       </div>
     </div>
@@ -166,6 +169,7 @@ export default function ProcessStepper({ steps }: ProcessStepperProps) {
                 </div>
               </div>
               {step.tools && step.tools.length > 0 && <ToolChips tools={step.tools} />}
+              {step.extra && <div className="mt-4 max-w-xl">{step.extra}</div>}
             </div>
           ))}
         </div>

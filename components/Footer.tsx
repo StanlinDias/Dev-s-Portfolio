@@ -6,6 +6,7 @@ const SITEMAP = [
   ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "/#now-building" }] : []),
   { label: "Trajectory", href: "/#trajectory" },
   { label: "Stack", href: "/#stack" },
+  { label: "Private models", href: "/private-models" },
   { label: "For agencies", href: "/partners" },
   { label: "Contact", href: "/#contact" },
 ];

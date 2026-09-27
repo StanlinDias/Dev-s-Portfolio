@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { label: "About", href: "/#hero" },
   { label: "Work", href: "/#work" },
   ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "/#now-building" }] : []),
+  { label: "Private models", href: "/private-models" },
   { label: "For agencies", href: "/partners" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -18,7 +19,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-sm bg-bg/90 border-b border-border">
       <div className="max-w-6xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <Link href="#hero" className="font-mono text-sm tracking-[0.15em] uppercase">
+        <Link href="/#hero" className="font-mono text-sm tracking-[0.15em] uppercase">
           Dev Seth
         </Link>
 
