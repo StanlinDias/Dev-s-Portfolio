@@ -23,7 +23,7 @@ const sintony = Sintony({
 });
 
 export const metadata: Metadata = {
-  title: SHOW_XANTYR ? "Dev Seth — AI architect, CTO of Xantyr" : "Dev Seth — Chief AI Architect",
+  title: SHOW_XANTYR ? "Dev Seth · AI architect, CTO of Xantyr" : "Dev Seth · Chief AI Architect",
   description: SHOW_XANTYR
     ? "7 years building AI that enterprises actually trust. Now building Xantyr."
     : "7 years building AI that enterprises actually trust.",

@@ -41,7 +41,7 @@ function CofounderBubble() {
   return (
     <div className="absolute -top-3 right-2 md:-top-4 md:-right-8 z-10">
       <div className="relative bg-text text-bg font-mono text-[10px] md:text-[11px] uppercase tracking-wider px-3 py-2 rounded-full shadow-lg whitespace-nowrap">
-        I&apos;m the co-founder — I write the code
+        I&apos;m the co-founder. I write the code
         <span className="absolute -bottom-1.5 left-6 w-3 h-3 bg-text rotate-45" />
       </div>
     </div>
@@ -64,7 +64,7 @@ function NowBuildingPanel() {
         </h2>
         <p className="text-text-muted text-base md:text-lg">
           Xantyr turns a company&apos;s own data into a specialised model it owns
-          outright — structure it, fine-tune it, deploy it. No ML team required.
+          outright: structure it, fine-tune it, deploy it. No ML team required.
         </p>
         <Button variant="primary" href="https://xantyr.com" label="Visit xantyr.com ▸" />
       </div>
@@ -89,8 +89,8 @@ export default function Home() {
           </h1>
           <p className="text-text-muted text-base md:text-lg max-w-2xl">
             {SHOW_XANTYR
-              ? "I've fine-tuned models for individuals and Fortune 500s, shipped production AI across pharma, retail, real estate, and government — and I'm now building the platform that lets any business own its model the same way."
-              : "I've fine-tuned models for individuals and enterprises, shipped production AI across pharma, retail, real estate, defence and government — and I build and deploy private models end to end, from data to on-prem serving."}
+              ? "I've fine-tuned models for individuals and Fortune 500s, shipped production AI across pharma, retail, real estate, and government. I'm now building the platform that lets any business own its model the same way."
+              : "I've fine-tuned models for individuals and enterprises, shipped production AI across pharma, retail, real estate, defence and government. I build and deploy private models end to end, from data to on-prem serving."}
           </p>
           <div className="flex flex-wrap gap-4 mt-2">
             {SHOW_XANTYR ? (
@@ -136,7 +136,7 @@ export default function Home() {
           {SHOW_XANTYR ? "Building Xantyr. Always happy to talk shop." : "Building private AI. Always happy to talk shop."}
         </h2>
         <p className="text-text-muted text-base md:text-lg max-w-2xl">
-          Ready to connect — always up for a conversation about AI, defence-grade
+          Ready to connect. Always up for a conversation about AI, defence-grade
           infrastructure, or anything hard and technical.
         </p>
         <div className="flex flex-wrap gap-6 font-mono text-sm uppercase tracking-wider mt-2">

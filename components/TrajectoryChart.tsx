@@ -112,7 +112,7 @@ export default function TrajectoryChart({ points }: TrajectoryChartProps) {
           transform: "translate(-50%, -140%)",
         }}
       >
-        <span className="text-accent">{activePoint.teamSize}</span> — {activePoint.role}
+        <span className="text-accent">{activePoint.teamSize}</span> · {activePoint.role}
       </motion.div>
     </div>
   );

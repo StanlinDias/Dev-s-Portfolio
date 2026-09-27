@@ -18,14 +18,14 @@
     {
       "tag": "Defence",
       "title": "Sovereign AI for national defence",
-      "summary": "Currently building secure, air-gapped AI systems with the Indian government for the Army and Navy — predictive maintenance, threat detection, sovereign models trained without any data leaving controlled infrastructure.",
+      "summary": "Currently building secure, air-gapped AI systems with the Indian government for the Army and Navy: predictive maintenance, threat detection, sovereign models trained without any data leaving controlled infrastructure.",
       "bullets": ["Sovereign, air-gapped model training for defence use cases", "Predictive maintenance and threat detection systems", "Grew the delivery team from 5 to 25+", "Built the internal training system the company still uses"],
       "confidential": true
     },
     {
       "tag": "Real estate",
       "title": "Conversational AI agents: Sasha & Selina",
-      "summary": "Architected two production AI agents — Sasha for real-time sales objection handling, Selina with hyper-local insights across 33,000+ US neighborhoods. Scaled to $50K+ MRR.",
+      "summary": "Architected two production AI agents: Sasha for real-time sales objection handling, Selina with hyper-local insights across 33,000+ US neighborhoods. Scaled to $50K+ MRR.",
       "bullets": ["Sasha: AI sales agent with real-time objection handling", "Selina: hyper-personalised neighborhood data for 33,000+ zip codes", "25% increase in qualified lead conversion via RAG and fine-tuning", "Full product lifecycle from concept to $50K+ MRR"]
     },
     {
@@ -63,7 +63,7 @@
       "oneLiner": "Grew the team 5x to 25+, now building sovereign AI for the Indian Army and Navy.",
       "bullets": [
         "Built AI systems for global enterprise clients across Europe and the US, including ZS Associates and Domino's UK, owning delivery from first conversation to deployment",
-        "Now working with the Indian government on sovereign AI for defence — predictive maintenance, threat detection, secure AI for the Army and Navy",
+        "Now working with the Indian government on sovereign AI for defence: predictive maintenance, threat detection, secure AI for the Army and Navy",
         "Grew the AI team from 5 to 25+",
         "Built the training system the company still uses",
         "Shipped 5+ new products from idea to paying customer"
@@ -85,7 +85,7 @@
       "company": "Home.LLC",
       "role": "AI & Analytics Manager",
       "period": "Apr 2023 – Sep 2024",
-      "oneLiner": "Turned the research into product — closed $40K+ in new AI consulting revenue.",
+      "oneLiner": "Turned the research into product, closing $40K+ in new AI consulting revenue.",
       "bullets": [
         "Closed 2 AI consulting projects, adding $40K+ in new monthly recurring revenue",
         "Built the entire digital home-buying experience end to end, powered by the analytics built previously"
@@ -118,11 +118,11 @@
     },
     {
       "title": "Beating Wall Street at its own game",
-      "body": "Built a housing market model that became the most accurate prediction in the US for 2023 — beating economists, banks, and financial publications by a wide margin, off by just a few basis points. Covered by ResiClub and Fortune."
+      "body": "Built a housing market model that became the most accurate prediction in the US for 2023, beating economists, banks, and financial publications by a wide margin, off by just a few basis points. Covered by ResiClub and Fortune."
     },
     {
       "title": "Built before",
-      "body": "Head of AI twice — currently at 2SD Technologies on sovereign defence AI for the Indian Army and Navy. Before that, built a CRM intelligence platform end to end for one of the world's biggest cost-consulting firms, and ran major AI projects for Domino's, Era Group, and ZS. All under client NDAs."
+      "body": "Head of AI twice, currently at 2SD Technologies on sovereign defence AI for the Indian Army and Navy. Before that, built a CRM intelligence platform end to end for one of the world's biggest cost-consulting firms, and ran major AI projects for Domino's, Era Group, and ZS. All under client NDAs."
     },
     {
       "title": "Awards & publications",
