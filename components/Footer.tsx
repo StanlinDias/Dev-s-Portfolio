@@ -1,12 +1,13 @@
 import { SHOW_XANTYR } from "@/lib/flags";
 
 const SITEMAP = [
-  { label: "About", href: "#hero" },
-  { label: "Work", href: "#work" },
-  ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "#now-building" }] : []),
-  { label: "Trajectory", href: "#trajectory" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#hero" },
+  { label: "Work", href: "/#work" },
+  ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "/#now-building" }] : []),
+  { label: "Trajectory", href: "/#trajectory" },
+  { label: "Stack", href: "/#stack" },
+  { label: "For agencies", href: "/partners" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Footer() {

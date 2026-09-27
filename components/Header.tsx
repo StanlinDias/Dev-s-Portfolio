@@ -5,10 +5,11 @@ import { useState } from "react";
 import { SHOW_XANTYR } from "@/lib/flags";
 
 const NAV_ITEMS = [
-  { label: "About", href: "#hero" },
-  { label: "Work", href: "#work" },
-  ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "#now-building" }] : []),
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#hero" },
+  { label: "Work", href: "/#work" },
+  ...(SHOW_XANTYR ? [{ label: "Building Xantyr", href: "/#now-building" }] : []),
+  { label: "For agencies", href: "/partners" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
