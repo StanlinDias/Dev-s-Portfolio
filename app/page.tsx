@@ -9,6 +9,7 @@ import StackGrid from "@/components/StackGrid";
 import AccomplishmentList from "@/components/AccomplishmentList";
 import Globe from "@/components/Globe";
 import TiltCard from "@/components/TiltCard";
+import SectionEyebrow from "@/components/SectionEyebrow";
 import data from "@/content/portfolio-data.json";
 import { SHOW_XANTYR } from "@/lib/flags";
 
@@ -56,9 +57,7 @@ function NowBuildingPanel() {
         className="relative px-8 py-10 text-center md:text-left flex flex-col gap-6 items-center md:items-start"
       >
         <CofounderBubble />
-        <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
-          now building
-        </p>
+        <SectionEyebrow>now building</SectionEyebrow>
         <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text">
           Vibe code your own private &amp; affordable LLM.
         </h2>
@@ -81,9 +80,9 @@ export default function Home() {
         </div>
 
         <div className="relative flex flex-col gap-8 max-w-2xl">
-          <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
+          <SectionEyebrow>
             {SHOW_XANTYR ? "cto · xantyr · ai architect" : "chief ai architect · model engineering"}
-          </p>
+          </SectionEyebrow>
           <h1 className="text-4xl md:text-6xl font-medium tracking-tight text-text max-w-4xl leading-[1.1]">
             7 years building AI that enterprises actually trust.
           </h1>

@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import SectionEyebrow from "@/components/SectionEyebrow";
 
 type CaseStudy = {
   tag: string;
@@ -9,6 +10,8 @@ type CaseStudy = {
   summary: string;
   bullets: string[];
   confidential?: boolean;
+  /** Optional stat row (e.g. eval score vs. baseline, cost/latency change) for model-work case studies. */
+  metrics?: { label: string; value: string }[];
 };
 
 type CaseStudyGridProps = {
@@ -73,9 +76,7 @@ export default function CaseStudyGrid({ items, tags }: CaseStudyGridProps) {
 
       <div className="relative max-w-6xl mx-auto">
         <div className="mb-10 md:mb-16">
-          <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent mb-3">
-            selected work
-          </p>
+          <SectionEyebrow className="mb-3">selected work</SectionEyebrow>
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white max-w-3xl">
             Case studies that moved the needle.
           </h2>
@@ -176,6 +177,18 @@ export default function CaseStudyGrid({ items, tags }: CaseStudyGridProps) {
                         </li>
                       ))}
                     </ul>
+                    {item.metrics && item.metrics.length > 0 && (
+                      <div className="flex flex-wrap gap-4 mt-4 pt-4 border-t border-white/10">
+                        {item.metrics.map((metric) => (
+                          <div key={metric.label}>
+                            <p className="font-mono text-lg text-accent">{metric.value}</p>
+                            <p className="font-mono text-[10px] uppercase tracking-wider text-white/50">
+                              {metric.label}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </motion.div>
                 </motion.div>
               );
