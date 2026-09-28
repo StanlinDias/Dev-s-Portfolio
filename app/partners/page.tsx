@@ -230,12 +230,7 @@ export default function PartnersPage() {
 
       <Section id="work-together" eyebrow="how we can work together" title="Three ways to partner.">
         <div className="mb-10">
-          <SegmentReveal
-            items={WORK_TOGETHER.map((item) => ({
-              title: item.title,
-              body: item.note ? `${item.body} ${item.note}` : item.body,
-            }))}
-          />
+          <SegmentReveal items={WORK_TOGETHER} />
         </div>
         <div className="border border-accent/40 bg-accent/[0.04] p-6 flex flex-col gap-2 max-w-2xl">
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">featured entry offer</p>
