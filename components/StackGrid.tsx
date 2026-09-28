@@ -1,3 +1,5 @@
+import { SHOW_XANTYR } from "@/lib/flags";
+
 type StackGroup = {
   group: string;
   items: string[];
@@ -69,16 +71,18 @@ export default function StackGrid({ groups }: StackGridProps) {
         ))}
       </div>
 
-      <div className="border-t border-border pt-6">
-        <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-3">
-          Currently building with
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {XANTYR_STACK.map((item) => (
-            <Chip key={item} label={item} accent />
-          ))}
+      {SHOW_XANTYR && (
+        <div className="border-t border-border pt-6">
+          <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-3">
+            Currently building with
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {XANTYR_STACK.map((item) => (
+              <Chip key={item} label={item} accent />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
