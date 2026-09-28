@@ -12,10 +12,10 @@ import DecisionHelper from "@/components/DecisionHelper";
 import TopologySwitcher from "@/components/TopologySwitcher";
 import CaseStudyGrid from "@/components/CaseStudyGrid";
 import FAQAccordion from "@/components/FAQAccordion";
-import GlossaryTerm from "@/components/GlossaryTerm";
 import BentoGrid from "@/components/BentoGrid";
 import SegmentReveal from "@/components/SegmentReveal";
 import data from "@/content/portfolio-data.json";
+import { SHOW_EVAL_CHART } from "@/lib/flags";
 
 export const metadata: Metadata = {
   title: "Dev Seth · Private, secure models and on-prem deployment",
@@ -25,22 +25,6 @@ export const metadata: Metadata = {
 
 // TODO: Dev to supply a real booking tool URL (plan Section 13, item 1).
 const BOOKING_URL = "mailto:devseth34@gmail.com?subject=20-min%20call";
-
-const CONFIRMED_TOOLS = [
-  "PyTorch",
-  "Unsloth",
-  "Modal",
-  "MLflow",
-  "Docker",
-  "Kubernetes",
-  "Terraform",
-  "AWS SageMaker",
-  "AWS Bedrock",
-  "Azure AI",
-  "LangGraph",
-  "vLLM",
-  "SGLang",
-];
 
 const PROCESS_STEPS: ProcessStep[] = [
   {
@@ -74,7 +58,7 @@ const PROCESS_STEPS: ProcessStep[] = [
       "Train, evaluate, read the failures, fix the data, repeat. Automated evals plus LLM-as-judge and human review, every run tracked. Worked example: the Playwright test-generation model.",
     whatYouGet: "Model checkpoints, eval reports per iteration, experiment log.",
     tools: ["PyTorch", "Unsloth", "MLflow"],
-    extra: (
+    extra: SHOW_EVAL_CHART ? (
       <EvalChart
         illustrative
         baseline={62}
@@ -86,7 +70,7 @@ const PROCESS_STEPS: ProcessStep[] = [
           { iteration: "v3", score: 91 },
         ]}
       />
-    ),
+    ) : undefined,
   },
   {
     number: "05",
@@ -122,7 +106,7 @@ const WHY_PRIVATE = [
   },
   {
     title: "Compliance",
-    body: "Runs in the client's region or building, which matters for regulated sectors and data residency requirements, a big theme for Australian clients.",
+    body: "Runs in the client's region or building, which matters for regulated sectors and data residency requirements.",
   },
 ];
 
@@ -182,10 +166,7 @@ const NAMED_PROJECTS = [
 ];
 
 const FAQ_ITEMS = [
-  { question: "Who owns the model?", answer: "The client." },
-  { question: "How much data do we need?", answer: "[Dev's answer]" },
-  { question: "What hardware does the client need?", answer: "[Dev's answer]" },
-  { question: "How long does a first version take?", answer: "[Dev's answer]" },
+  { question: "Who owns the model?", answer: "The client. Data, eval sets and weights stay theirs." },
   {
     question: "What if a new version performs worse?",
     answer: "The regression suite blocks it before it ships, and the previous version stays live until it's fixed.",
@@ -241,8 +222,8 @@ export default function PrivateModelsPage() {
               Seven steps, from data to a model running in your client&apos;s environment.
             </h2>
             <p className="text-text-muted text-base md:text-lg max-w-2xl mb-10">
-              Confirmed tools across these steps: {CONFIRMED_TOOLS.filter((t) => t !== "vLLM" && t !== "SGLang").join(", ")},{" "}
-              <GlossaryTerm term="vLLM" /> and <GlossaryTerm term="SGLang" /> for serving.
+              Tools I use across these steps: PyTorch, Unsloth, Modal, MLflow, Docker, Kubernetes, Terraform,
+              AWS SageMaker, AWS Bedrock, Azure AI and LangGraph, with vLLM and SGLang for serving.
             </p>
             <ProcessStepper steps={PROCESS_STEPS} />
           </div>
