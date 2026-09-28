@@ -210,7 +210,7 @@ export default function PrivateModelsPage() {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12 flex gap-12 border-t border-border">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row lg:gap-12 border-t border-border">
         <SectionIndex items={SECTION_INDEX_ITEMS} />
 
         <div className="flex-1 min-w-0">
