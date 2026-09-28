@@ -21,11 +21,15 @@ const XANTYR_STACK = [
 ];
 
 const GROUP_ICONS: Record<string, string> = {
+  "Model engineering": "◈",
   "LLM & agentic AI": "◈",
   "Cloud & MLOps": "◫",
   "Data science & ML": "◇",
   Leadership: "◆",
 };
+
+// Groups that take a full row, so an odd group count doesn't leave a gap.
+const WIDE_GROUPS = new Set(["Model engineering"]);
 
 function Chip({ label, accent = false }: { label: string; accent?: boolean }) {
   return (
@@ -46,7 +50,9 @@ export default function StackGrid({ groups }: StackGridProps) {
         {groups.map((group) => (
           <div
             key={group.group}
-            className="border border-border p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors"
+            className={`border border-border p-5 flex flex-col gap-3 hover:border-accent/50 transition-colors ${
+              WIDE_GROUPS.has(group.group) ? "sm:col-span-2 lg:col-span-4" : ""
+            }`}
           >
             <div className="flex items-center gap-2">
               <span className="text-accent text-base leading-none">{GROUP_ICONS[group.group] ?? "◆"}</span>

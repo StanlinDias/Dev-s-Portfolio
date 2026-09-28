@@ -104,6 +104,7 @@
   ],
 
   "stack": [
+    { "group": "Model engineering", "items": ["Full fine-tuning", "LoRA / QLoRA / PEFT", "Instruction tuning", "DPO", "GRPO", "Distillation", "Quantization", "vLLM & SGLang serving", "Custom model architecture"] },
     { "group": "LLM & agentic AI", "items": ["Retrieval-augmented generation", "LangChain & LangGraph", "LLM fine-tuning (LoRA/QLoRA)", "Vector DBs (Pinecone, Chroma)", "TTS & STT", "Prompt engineering"] },
     { "group": "Cloud & MLOps", "items": ["AWS SageMaker & Lambda", "Docker & Kubernetes", "CI/CD pipelines", "FastAPI & Flask", "MLflow", "Terraform"] },
     { "group": "Data science & ML", "items": ["Python & SQL", "PyTorch & TensorFlow", "Scikit-learn", "Tableau & Power BI", "Apache Spark", "A/B testing"] },
@@ -117,7 +118,7 @@
     },
     {
       "title": "Beating Wall Street at its own game",
-      "body": "Built a housing market model that became the most accurate prediction in the US for 2023, beating economists, banks, and financial publications by a wide margin, off by just a few basis points. Covered by ResiClub and Fortune."
+      "body": "Led the modelling behind Home.LLC's forecast for US home prices in 2023. It called a 4% rise when most forecasters expected prices to fall, and ResiClub named it the most accurate of the nearly 20 forecasts it compared. Covered by ResiClub and Fortune."
     },
     {
       "title": "Built before",
@@ -125,7 +126,7 @@
     },
     {
       "title": "Awards & publications",
-      "body": "Work featured in Fortune, Forbes, ResiClub, and WSJ. Published \"E-Commerce Adoption by Service MSMEs,\" recognised at the 3rd National Conference on Sustainable Agricultural Development for Food Security and Nutrition. Gold medal two years running, and again as top performer at current organisation."
+      "body": "Forecasting work covered by Fortune and ResiClub. Published \"E-Commerce Adoption by Service MSMEs,\" recognised at the 3rd National Conference on Sustainable Agricultural Development for Food Security and Nutrition. Gold medal two years running, and again as top performer at current organisation."
     }
   ]
 }

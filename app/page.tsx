@@ -99,6 +99,12 @@ export default function Home() {
             )}
             <Button variant="secondary" href="#work" label="View case studies" />
           </div>
+          <a
+            href="/partners"
+            className="self-start font-mono text-sm uppercase tracking-wider text-text-muted hover:text-accent"
+          >
+            Open to partner projects with agencies →
+          </a>
         </div>
       </section>
 
