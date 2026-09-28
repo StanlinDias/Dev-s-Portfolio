@@ -12,6 +12,7 @@ import FAQAccordion from "@/components/FAQAccordion";
 import BentoGrid from "@/components/BentoGrid";
 import SegmentReveal from "@/components/SegmentReveal";
 import data from "@/content/portfolio-data.json";
+import { SHOW_PLAYWRIGHT_STAT, SHOW_TESTIMONIALS } from "@/lib/flags";
 
 export const metadata: Metadata = {
   title: "Dev Seth · Model engineering partner for AI and software agencies",
@@ -78,14 +79,14 @@ const EXPERIENCE = [
   {
     company: "100x.inc",
     role: "Founding Engineer & Head of AI",
-    period: "Oct 2024 to Nov 2025",
+    period: "Feb 2025 to Nov 2025",
     summary:
       "AI agents Sasha and Selina, past $50K MRR, a team of 12, +25% qualified lead conversion through A/B testing, LLM fine-tuning and retrieval tuning.",
   },
   {
     company: "Home.LLC",
     role: "Head of AI and earlier roles",
-    period: "Jan 2021 to Sep 2024",
+    period: "Jan 2021 to Jan 2025",
     summary:
       "AI agent across phone, SMS and email, +20% lead qualification accuracy, 15% lower cloud costs. A home price growth model at 87% accuracy across 100 US markets.",
   },
@@ -103,8 +104,6 @@ const WORK_TOGETHER = [
   {
     title: "Referral",
     body: "You introduce, I contract directly.",
-    // TODO: Dev to confirm the referral fee (plan Section 13, item 7).
-    note: "Referral fee: [Dev to confirm]",
   },
   {
     title: "White-label",
@@ -124,16 +123,18 @@ const TRUST_ITEMS = [
 ];
 
 const FAQ_ITEMS = [
-  { question: "Do you work directly with end clients?", answer: "[Dev's answer]" },
   {
-    question: "How is pricing structured?",
-    answer: "[Dev's answer: fixed sprint, then project or retainer]",
+    question: "Who owns the model and the data?",
+    answer: "The client. Data, eval sets and model weights all stay theirs.",
+  },
+  {
+    question: "Can you work under our brand?",
+    answer: "Yes. I'm white-label and NDA friendly, and I don't approach your clients directly.",
   },
   {
     question: "What does a client need to have ready?",
     answer: "Data access, a clear task, and success criteria.",
   },
-  { question: "Can you work inside our tools and repos?", answer: "[Dev's answer]" },
 ];
 
 const RELEVANT_TAGS = ["Defence", "Real estate"];
@@ -168,25 +169,24 @@ export default function PartnersPage() {
       </section>
 
       <div className="border-t border-border px-6 md:px-12 py-16 md:py-20 max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+        <div
+          className={`grid gap-8 md:gap-10 ${
+            SHOW_PLAYWRIGHT_STAT ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2 md:grid-cols-3"
+          }`}
+        >
           <StatCounter value={7} suffix=" yrs" label="shipping production AI" />
           <StatCounter value={25} prefix="5 → " suffix="+" label="AI practice grown at 2SD" />
           <StatCounter value={5} suffix="+" label="products shipped from idea to paying customer" />
-          <div className="flex flex-col gap-1">
-            <p className="font-mono text-4xl md:text-6xl font-medium text-text-muted">[TBD]</p>
-            <p className="text-sm md:text-base text-text-muted max-w-[20ch]">
-              accuracy vs. frontier models, Playwright test-generation model
-            </p>
-          </div>
+          {SHOW_PLAYWRIGHT_STAT && (
+            <div className="flex flex-col gap-1">
+              <p className="font-mono text-4xl md:text-6xl font-medium text-text-muted">[TBD]</p>
+              <p className="text-sm md:text-base text-text-muted max-w-[20ch]">
+                accuracy vs. frontier models, Playwright test-generation model
+              </p>
+            </div>
+          )}
         </div>
       </div>
-
-      <Section id="where-i-fit" eyebrow="where i fit" title="You own the product. I own the model.">
-        <LayerDiagram
-          layers={LAYERS}
-          footnote="You own the relationship and the product. I own the part that needs a model specialist."
-        />
-      </Section>
 
       <Section
         id="experience"
@@ -243,10 +243,9 @@ export default function PartnersPage() {
         <div className="border border-accent/40 bg-accent/[0.04] p-6 flex flex-col gap-2 max-w-2xl">
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">featured entry offer</p>
           <h3 className="text-lg font-medium text-text">Model feasibility sprint</h3>
-          {/* TODO: Dev to confirm sprint duration (plan Section 13, item 7). */}
           <p className="text-sm text-text-muted">
-            [duration]: baseline evals, a RAG vs fine-tune recommendation, and a cost and hardware estimate.
-            Fixed scope, easy to resell.
+            A fixed-scope first engagement: baseline evals, a RAG vs fine-tune recommendation, and a cost
+            and hardware estimate. Easy to resell to your client.
           </p>
         </div>
       </Section>
@@ -274,12 +273,14 @@ export default function PartnersPage() {
         </div>
       </Section>
 
-      <Section id="social-proof" eyebrow="social proof" title="What agencies say.">
-        {/* TODO: Dev to supply testimonial quotes and confirm logo permissions (plan Section 13, item 6). */}
-        <div className="border border-border p-6 max-w-xl">
-          <p className="text-sm text-text-muted">[Testimonials and permitted logos, Dev to supply]</p>
-        </div>
-      </Section>
+      {SHOW_TESTIMONIALS && (
+        <Section id="social-proof" eyebrow="social proof" title="What agencies say.">
+          {/* TODO: Dev to supply testimonial quotes and confirm logo permissions (plan Section 13, item 6). */}
+          <div className="border border-border p-6 max-w-xl">
+            <p className="text-sm text-text-muted">[Testimonials and permitted logos, Dev to supply]</p>
+          </div>
+        </Section>
+      )}
 
       <Section id="faq" eyebrow="faq" title="Common questions.">
         <FAQAccordion items={FAQ_ITEMS} jsonLd />

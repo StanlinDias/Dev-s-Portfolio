@@ -8,7 +8,7 @@
 
   "trajectory": [
     { "role": "Sr. Data Scientist, Home.LLC", "period": "Jan 2021 – Mar 2023", "teamSize": 5 },
-    { "role": "Founding Engineer & Head of AI, 100x.inc", "period": "Oct 2024 – Nov 2025", "teamSize": 12 },
+    { "role": "Founding Engineer & Head of AI, 100x.inc", "period": "Feb 2025 – Nov 2025", "teamSize": 12 },
     { "role": "Lead – AI, 2SD Technologies", "period": "Nov 2025 – present", "teamSize": 25 }
   ],
 
@@ -72,7 +72,7 @@
     {
       "company": "100x.inc",
       "role": "Founding Engineer & Head of Artificial Intelligence",
-      "period": "Oct 2024 – Nov 2025",
+      "period": "Feb 2025 – Nov 2025",
       "oneLiner": "Built Sasha and Selina from scratch, led a 12-person team shipping RAG agents at scale.",
       "bullets": [
         "Built and shipped two conversational AI agents, Sasha (sales) and Selina (real estate), delivering personalised insights across 33,000+ US neighborhoods",
@@ -84,7 +84,7 @@
     {
       "company": "Home.LLC",
       "role": "AI & Analytics Manager",
-      "period": "Apr 2023 – Sep 2024",
+      "period": "Apr 2023 – Jan 2025",
       "oneLiner": "Turned the research into product, closing $40K+ in new AI consulting revenue.",
       "bullets": [
         "Closed 2 AI consulting projects, adding $40K+ in new monthly recurring revenue",
