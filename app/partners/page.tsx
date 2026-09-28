@@ -168,7 +168,9 @@ export default function PartnersPage() {
       <div className="border-t border-border px-6 md:px-12 py-16 md:py-20 max-w-6xl mx-auto">
         <div
           className={`grid gap-8 md:gap-10 ${
-            SHOW_PLAYWRIGHT_STAT ? "grid-cols-2 md:grid-cols-4" : "grid-cols-2 md:grid-cols-3"
+            SHOW_PLAYWRIGHT_STAT
+              ? "grid-cols-2 md:grid-cols-4"
+              : "grid-cols-2 md:grid-cols-3 [&>*:last-child]:col-span-2 md:[&>*:last-child]:col-span-1"
           }`}
         >
           <StatCounter value={7} suffix=" yrs" label="shipping production AI" />
