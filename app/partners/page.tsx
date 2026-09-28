@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Button from "@/components/Button";
+import BookingButton from "@/components/BookingButton";
 import Section from "@/components/Section";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import StatCounter from "@/components/StatCounter";
@@ -19,10 +20,6 @@ export const metadata: Metadata = {
   description:
     "The model layer behind your AI projects: evals, fine-tuning, distillation and private deployment. You keep the client, I work behind your team.",
 };
-
-// TODO: Dev to supply a real booking tool URL (plan Section 13, item 1).
-// Using a mailto fallback until then so the CTA stays functional.
-const BOOKING_URL = "mailto:devseth34@gmail.com?subject=20-min%20call";
 
 const LAYERS = [
   { title: "Client", owns: "Relationship, budget, requirements." },
@@ -155,7 +152,7 @@ export default function PartnersPage() {
               distillation and private deployment. You keep the client. I work behind your team.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
-              <Button variant="primary" href={BOOKING_URL} label="Book a 20-min call" />
+              <BookingButton />
               <Button variant="secondary" href="/private-models" label="How I build private models" />
             </div>
           </div>
@@ -291,7 +288,7 @@ export default function PartnersPage() {
           Got a client need that&apos;s outgrown prompting?
         </h2>
         <div className="flex flex-wrap gap-6 items-center mt-2">
-          <Button variant="primary" href={BOOKING_URL} label="Book a 20-min call" />
+          <BookingButton />
           <a
             href="mailto:devseth34@gmail.com"
             className="font-mono text-sm uppercase tracking-wider text-accent hover:text-accent-hover"

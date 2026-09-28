@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 const ZONES = [
   { label: "Delhi", timeZone: "Asia/Kolkata" },
@@ -29,28 +29,33 @@ function localHourAtIST(istHour: number, istOffset: number, targetOffset: number
   return targetMinutes / 60;
 }
 
-export default function TimezoneOverlap() {
-  const [now, setNow] = useState<Date | null>(null);
+// A once-a-second clock shared through useSyncExternalStore. The server
+// snapshot is null, so SSR and hydration render the static fallback and the
+// live clocks only appear once the client has subscribed.
+let clockNow: Date | null = null;
 
-  useEffect(() => {
-    setNow(new Date());
-    const interval = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
+function subscribeClock(onChange: () => void) {
+  const tick = () => {
+    clockNow = new Date();
+    onChange();
+  };
+  tick();
+  const interval = setInterval(tick, 1000);
+  return () => clearInterval(interval);
+}
+
+export default function TimezoneOverlap() {
+  const now = useSyncExternalStore(
+    subscribeClock,
+    () => clockNow,
+    () => null
+  );
 
   if (!now) {
-    // Server / first paint: render the static shell, clocks fill in on mount.
     return (
-      <div className="flex flex-col gap-8">
-        <div className="grid grid-cols-3 gap-4">
-          {ZONES.map((zone) => (
-            <div key={zone.timeZone} className="text-center">
-              <p className="font-mono text-xs uppercase tracking-wider text-text-muted mb-1">{zone.label}</p>
-              <p className="font-mono text-2xl md:text-3xl text-text tabular-nums">--:--</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <p className="text-sm md:text-base text-text-muted">
+        IST mornings overlap Australian afternoons. IST evenings overlap US mornings.
+      </p>
     );
   }
 

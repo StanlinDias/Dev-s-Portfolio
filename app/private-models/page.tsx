@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Button from "@/components/Button";
+import BookingButton from "@/components/BookingButton";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import BoundaryVisual from "@/components/BoundaryVisual";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
@@ -22,9 +23,6 @@ export const metadata: Metadata = {
   description:
     "I build specialised models end to end, starting with the data, then deploy them inside the client's own cloud, data centre or air-gapped network.",
 };
-
-// TODO: Dev to supply a real booking tool URL (plan Section 13, item 1).
-const BOOKING_URL = "mailto:devseth34@gmail.com?subject=20-min%20call";
 
 const PROCESS_STEPS: ProcessStep[] = [
   {
@@ -204,7 +202,7 @@ export default function PrivateModelsPage() {
               cloud, data centre or air-gapped network.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
-              <Button variant="primary" href={BOOKING_URL} label="Book a 20-min call" />
+              <BookingButton />
               <Button variant="secondary" href="#process" label="See the process ↓" />
             </div>
           </div>
@@ -300,7 +298,7 @@ export default function PrivateModelsPage() {
           Have a use case that can&apos;t leave the building?
         </h2>
         <div className="flex flex-wrap gap-6 items-center mt-2">
-          <Button variant="primary" href={BOOKING_URL} label="Book a 20-min call" />
+          <BookingButton />
           <a
             href="/partners"
             className="font-mono text-sm uppercase tracking-wider text-text-muted hover:text-accent"

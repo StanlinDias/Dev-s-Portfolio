@@ -19,8 +19,7 @@
       "tag": "Defence",
       "title": "Sovereign AI for national defence",
       "summary": "Currently building secure, air-gapped AI systems with the Indian government for the Army and Navy: predictive maintenance, threat detection, sovereign models trained without any data leaving controlled infrastructure.",
-      "bullets": ["Sovereign, air-gapped model training for defence use cases", "Predictive maintenance and threat detection systems", "Grew the delivery team from 5 to 25+", "Built the internal training system the company still uses"],
-      "confidential": true
+      "bullets": ["Sovereign, air-gapped model training for defence use cases", "Predictive maintenance and threat detection systems", "Grew the delivery team from 5 to 25+", "Built the internal learning and training framework, adopted across all technical verticals"]
     },
     {
       "tag": "Real estate",
@@ -65,7 +64,7 @@
         "Built AI systems for global enterprise clients across Europe and the US, including ZS Associates and Domino's UK, owning delivery from first conversation to deployment",
         "Now working with the Indian government on sovereign AI for defence: predictive maintenance, threat detection, secure AI for the Army and Navy",
         "Grew the AI team from 5 to 25+",
-        "Built the training system the company still uses",
+        "Built the internal learning and training framework, adopted across all technical verticals",
         "Shipped 5+ new products from idea to paying customer"
       ]
     },
