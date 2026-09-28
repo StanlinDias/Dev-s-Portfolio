@@ -35,7 +35,9 @@ export default function StatDial({ value, max, unit, label, sub }: StatDialProps
   const count = useTransform(progress, (p) => Math.round(p * max));
 
   useEffect(() => {
-    if (!reduceMotion) setDisplay(count.get());
+    if (reduceMotion) return;
+    const frame = requestAnimationFrame(() => setDisplay(count.get()));
+    return () => cancelAnimationFrame(frame);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

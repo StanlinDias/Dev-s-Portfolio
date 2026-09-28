@@ -26,7 +26,9 @@ export default function StatCounter({ value, prefix = "", suffix = "", label }: 
   const count = useTransform(scrollYProgress, [0, 1], [0, value]);
 
   useEffect(() => {
-    if (!reduceMotion) setDisplay(Math.round(count.get()));
+    if (reduceMotion) return;
+    const frame = requestAnimationFrame(() => setDisplay(Math.round(count.get())));
+    return () => cancelAnimationFrame(frame);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

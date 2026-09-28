@@ -44,45 +44,45 @@ function computeSpec(hardware: Hardware, latency: Latency, sensitivity: Sensitiv
   };
 }
 
+function SegmentedControl<T extends string>({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: { value: T; label: string }[];
+  value: T;
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <p className="font-mono text-[10px] uppercase tracking-wider text-text-muted">{label}</p>
+      <div className="flex flex-wrap gap-2">
+        {options.map((opt) => (
+          <button
+            key={opt.value}
+            onClick={() => onChange(opt.value)}
+            className={`font-mono text-xs uppercase tracking-wider px-3 py-1.5 border transition-colors ${
+              value === opt.value
+                ? "border-accent text-accent"
+                : "border-border text-text-muted hover:text-text"
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function SpecPicker() {
   const [hardware, setHardware] = useState<Hardware>("single-gpu");
   const [latency, setLatency] = useState<Latency>("real-time");
   const [sensitivity, setSensitivity] = useState<Sensitivity>("standard");
 
   const spec = useMemo(() => computeSpec(hardware, latency, sensitivity), [hardware, latency, sensitivity]);
-
-  function SegmentedControl<T extends string>({
-    label,
-    options,
-    value,
-    onChange,
-  }: {
-    label: string;
-    options: { value: T; label: string }[];
-    value: T;
-    onChange: (v: T) => void;
-  }) {
-    return (
-      <div className="flex flex-col gap-2">
-        <p className="font-mono text-[10px] uppercase tracking-wider text-text-muted">{label}</p>
-        <div className="flex flex-wrap gap-2">
-          {options.map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => onChange(opt.value)}
-              className={`font-mono text-xs uppercase tracking-wider px-3 py-1.5 border transition-colors ${
-                value === opt.value
-                  ? "border-accent text-accent"
-                  : "border-border text-text-muted hover:text-text"
-              }`}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="border border-border p-6 flex flex-col gap-6">
