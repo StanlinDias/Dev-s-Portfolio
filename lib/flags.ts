@@ -9,6 +9,3 @@ export const SHOW_PLAYWRIGHT_STAT = false;
 export const SHOW_TESTIMONIALS = false;
 export const SHOW_EVAL_CHART = false;
 
-// Set to a real scheduling link (e.g. Cal.com) to switch every booking CTA
-// from "Email me to set up a call" to "Book a 20-min call".
-export const BOOKING_URL = "";

@@ -46,7 +46,7 @@ const MODES: ModeConfig[] = [
     label: "On-prem",
     description: "Runs entirely on hardware inside the client's own building or data centre.",
     typicalFor: "Typical for regulated or defence clients.",
-    example: "Example: the sovereign AI programme (Army, Navy, air-gapped).",
+    example: "Example: a national defence programme (air-gapped).",
     boundary: { x: 20, y: 20, w: 200, h: 160 },
     nodes: {
       data: { x: 60, y: 60 },

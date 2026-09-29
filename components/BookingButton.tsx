@@ -1,14 +1,18 @@
 import Button from "@/components/Button";
-import { BOOKING_URL } from "@/lib/flags";
+import { site } from "@/content/site";
 
-const FALLBACK_HREF = "mailto:devseth34@gmail.com?subject=Intro%20call";
+type BookingButtonProps = {
+  /** Email subject, URL-encoded. */
+  subject?: string;
+  emailLabel?: string;
+};
 
-// Primary "get in touch" CTA. Points at the booking tool once BOOKING_URL is
-// set (Button opens http links in a new tab); until then it's an honest email link.
-export default function BookingButton() {
-  return BOOKING_URL ? (
-    <Button variant="primary" href={BOOKING_URL} label="Book a 20-min call" />
+// Primary CTA: the booking tool once site.bookingUrl is set (Button opens http
+// links in a new tab); until then an honest email link.
+export default function BookingButton({ subject = "Intro%20call", emailLabel = "Email me" }: BookingButtonProps) {
+  return site.bookingUrl ? (
+    <Button variant="primary" href={site.bookingUrl} label="Book a call" />
   ) : (
-    <Button variant="primary" href={FALLBACK_HREF} label="Email me to set up a call" />
+    <Button variant="primary" href={`mailto:${site.email}?subject=${subject}`} label={emailLabel} />
   );
 }

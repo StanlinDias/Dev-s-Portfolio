@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Button from "@/components/Button";
 import Section from "@/components/Section";
 import ScrollZoomReveal from "@/components/ScrollZoomReveal";
@@ -186,13 +187,14 @@ export default function Home() {
             />
           ))}
         </div>
-        <a
+        <Link
           href="/private-models"
+          transitionTypes={["nav-forward"]}
           data-reveal
           className="inline-block mt-10 font-mono text-sm uppercase tracking-wider text-accent hover:text-accent-hover"
         >
           See how I build them →
-        </a>
+        </Link>
       </Section>
 
       <Section

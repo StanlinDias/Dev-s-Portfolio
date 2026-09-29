@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Button from "@/components/Button";
 import BookingButton from "@/components/BookingButton";
 import SectionEyebrow from "@/components/SectionEyebrow";
@@ -11,11 +12,12 @@ import SpecPicker from "@/components/SpecPicker";
 import EvalChart from "@/components/EvalChart";
 import DecisionHelper from "@/components/DecisionHelper";
 import TopologySwitcher from "@/components/TopologySwitcher";
-import CaseStudyGrid from "@/components/CaseStudyGrid";
 import FAQAccordion from "@/components/FAQAccordion";
 import BentoGrid from "@/components/BentoGrid";
 import SegmentReveal from "@/components/SegmentReveal";
-import data from "@/content/portfolio-data.json";
+import ModelCard from "@/components/ModelCard";
+import { models } from "@/content/models";
+import { stagger } from "@/lib/motion";
 import { SHOW_EVAL_CHART } from "@/lib/flags";
 
 export const metadata: Metadata = {
@@ -138,28 +140,7 @@ const SECURITY_CONTROLS = [
   {
     glyph: "◈",
     title: "Air-gapped option",
-    teaser: "Offline model delivery, as built for the sovereign AI programme.",
-  },
-];
-
-const NAMED_PROJECTS = [
-  {
-    title: "Playwright test-generation model",
-    oneLiner: "A small fine-tuned model that generates Playwright browser tests at higher accuracy than frontier models.",
-    problem:
-      "Writing and maintaining Playwright test suites by hand is slow, and general-purpose frontier models generate tests with flaky selectors and wrong assertions.",
-  },
-  {
-    title: "On-device document processing model",
-    oneLiner: "A model that runs on your phone to process documents entirely on-device.",
-    problem:
-      "Cloud-based document processing sends sensitive documents off-device and needs connectivity; regulated or privacy-conscious clients need it handled locally.",
-  },
-  {
-    title: "Decision intelligence engine",
-    oneLiner: "A purpose-built model for fast, reliable decisions embedded directly in a workflow.",
-    problem:
-      "General-purpose LLM calls are too slow or inconsistent for decisions that need to happen inline in a workflow.",
+    teaser: "Offline model delivery, as built for a national defence programme.",
   },
 ];
 
@@ -182,8 +163,6 @@ const SECTION_INDEX_ITEMS = [
   { id: "faq", label: "FAQ" },
 ];
 
-const defenceCaseStudy = data.caseStudies.filter((item) => item.tag === "Defence");
-
 export default function PrivateModelsPage() {
   return (
     <>
@@ -202,7 +181,7 @@ export default function PrivateModelsPage() {
               cloud, data centre or air-gapped network.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
-              <BookingButton />
+              <BookingButton subject="Private%20models" />
               <Button variant="secondary" href="#process" label="See the process ↓" />
             </div>
           </div>
@@ -216,7 +195,7 @@ export default function PrivateModelsPage() {
         <div className="flex-1 min-w-0">
           <div id="process" className="py-16 md:py-20">
             <SectionEyebrow className="mb-3">the process</SectionEyebrow>
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-4">
+            <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-4">
               Seven steps, from data to a model running in your client&apos;s environment.
             </h2>
             <p className="text-text-muted text-base md:text-lg max-w-2xl mb-10">
@@ -228,7 +207,7 @@ export default function PrivateModelsPage() {
 
           <div id="why-private" className="py-16 md:py-20 border-t border-border">
             <SectionEyebrow className="mb-3">why private</SectionEyebrow>
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
+            <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               Three reasons it&apos;s worth doing.
             </h2>
             <SegmentReveal items={WHY_PRIVATE} />
@@ -236,7 +215,7 @@ export default function PrivateModelsPage() {
 
           <div id="security" className="py-16 md:py-20 border-t border-border">
             <SectionEyebrow className="mb-3">security by design</SectionEyebrow>
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
+            <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               Built to hold up under a security review.
             </h2>
             <BentoGrid
@@ -250,7 +229,7 @@ export default function PrivateModelsPage() {
 
           <div id="decide" className="py-16 md:py-20 border-t border-border">
             <SectionEyebrow className="mb-3">fine-tune, rag, or both?</SectionEyebrow>
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
+            <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               Not sure which you need? Answer three questions.
             </h2>
             <DecisionHelper />
@@ -258,7 +237,7 @@ export default function PrivateModelsPage() {
 
           <div id="deployment" className="py-16 md:py-20 border-t border-border">
             <SectionEyebrow className="mb-3">deployment options</SectionEyebrow>
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
+            <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               Client VPC, on-prem, on-device, or fully air-gapped.
             </h2>
             <TopologySwitcher />
@@ -266,27 +245,35 @@ export default function PrivateModelsPage() {
 
           <div id="proof" className="py-16 md:py-20 border-t border-border">
             <SectionEyebrow className="mb-3">proof</SectionEyebrow>
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
+            <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
               What this looks like, built.
             </h2>
-            <BentoGrid
-              emphasizeFirst={false}
-              items={NAMED_PROJECTS.map((project) => ({
-                title: project.title,
-                body: project.oneLiner,
-                note: project.problem,
-              }))}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {models.map((model, i) => (
+                <ModelCard
+                  key={model.name}
+                  model={model}
+                  style={stagger(i)}
+                  className={i === models.length - 1 && models.length % 2 === 1 ? "md:col-span-2" : ""}
+                />
+              ))}
+            </div>
+            <Link
+              href="/#work"
+              transitionTypes={["nav-back"]}
+              data-reveal
+              className="inline-block mt-10 font-mono text-sm uppercase tracking-wider text-accent hover:text-accent-hover"
+            >
+              See the case studies →
+            </Link>
           </div>
         </div>
       </div>
 
-      <CaseStudyGrid items={defenceCaseStudy} tags={["Defence"]} />
-
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-16 md:py-20 border-t border-border">
         <div id="faq">
           <SectionEyebrow className="mb-3">faq</SectionEyebrow>
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
+          <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl mb-10">
             Common questions.
           </h2>
           <FAQAccordion items={FAQ_ITEMS} jsonLd />
@@ -294,17 +281,18 @@ export default function PrivateModelsPage() {
       </div>
 
       <section id="contact" className="px-6 md:px-12 py-16 md:py-24 max-w-6xl mx-auto border-t border-border flex flex-col gap-6">
-        <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl">
+        <h2 data-reveal="heading" className="text-3xl md:text-5xl font-medium tracking-tight text-text max-w-3xl">
           Have a use case that can&apos;t leave the building?
         </h2>
         <div className="flex flex-wrap gap-6 items-center mt-2">
-          <BookingButton />
-          <a
-            href="/partners"
+          <BookingButton subject="Private%20models" />
+          <Link
+            href="/#work"
+            transitionTypes={["nav-back"]}
             className="font-mono text-sm uppercase tracking-wider text-text-muted hover:text-accent"
           >
-            For agencies ▸
-          </a>
+            See the work →
+          </Link>
         </div>
       </section>
     </>

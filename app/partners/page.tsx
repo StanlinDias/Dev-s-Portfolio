@@ -152,7 +152,7 @@ export default function PartnersPage() {
               distillation and private deployment. You keep the client. I work behind your team.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
-              <BookingButton />
+              <BookingButton emailLabel="Email me to set up a call" />
               <Button variant="secondary" href="/private-models" label="How I build private models" />
             </div>
           </div>
@@ -285,7 +285,7 @@ export default function PartnersPage() {
           Got a client need that&apos;s outgrown prompting?
         </h2>
         <div className="flex flex-wrap gap-6 items-center mt-2">
-          <BookingButton />
+          <BookingButton emailLabel="Email me to set up a call" />
           <a
             href="mailto:devseth34@gmail.com"
             className="font-mono text-sm uppercase tracking-wider text-accent hover:text-accent-hover"
