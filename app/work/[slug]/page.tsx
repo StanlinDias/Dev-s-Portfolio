@@ -8,8 +8,8 @@ import CountUp from "@/components/CountUp";
 import FlowDiagram from "@/components/FlowDiagram";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import CaseStudyMiniHeader from "@/components/CaseStudyMiniHeader";
+import ScrollToTop from "@/components/ScrollToTop";
 import ContactBlock from "@/components/ContactBlock";
-import SectionEyebrow from "@/components/SectionEyebrow";
 import { caseStudies, getCaseStudy, getNextCaseStudy } from "@/content/case-studies";
 import { site } from "@/content/site";
 import { stagger } from "@/lib/motion";
@@ -35,9 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 function Block({ eyebrow, children }: { eyebrow: string; children: React.ReactNode }) {
   return (
     <section className="py-12 md:py-16 border-t border-border">
-      <div data-reveal>
-        <SectionEyebrow className="mb-6">{eyebrow}</SectionEyebrow>
-      </div>
+      <h2 data-reveal className="mb-6 font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
+        {eyebrow}
+      </h2>
       {children}
     </section>
   );
@@ -61,6 +61,7 @@ export default async function CaseStudyPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <ScrollToTop />
       <CaseStudyMiniHeader title={study.title} heroId="case-hero" />
 
       <article>
@@ -167,9 +168,9 @@ export default async function CaseStudyPage({ params }: Props) {
           </Block>
 
           <section className="py-12 md:py-16 border-t border-border">
-            <div data-reveal>
-              <SectionEyebrow className="mb-6">next case study</SectionEyebrow>
-            </div>
+            <h2 data-reveal className="mb-6 font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-accent">
+              next case study
+            </h2>
             <CaseStudyCard study={next} label="Read the next case study →" className="md:p-10" />
           </section>
         </div>

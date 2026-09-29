@@ -44,7 +44,6 @@ export default function Header() {
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          aria-label="Toggle navigation"
         >
           {open ? "Close" : "Menu"}
         </button>

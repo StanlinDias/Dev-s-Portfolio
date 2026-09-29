@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import Section from "@/components/Section";
 import ScrollZoomReveal from "@/components/ScrollZoomReveal";
 import AccomplishmentList from "@/components/AccomplishmentList";
-import Globe from "@/components/Globe";
+import LazyGlobe from "@/components/LazyGlobe";
 import TiltCard from "@/components/TiltCard";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import CountUp from "@/components/CountUp";
@@ -92,7 +92,7 @@ export default function Home() {
 
       <section id="hero" className="relative px-6 md:px-12 pt-16 pb-16 md:pt-24 md:pb-20 max-w-6xl mx-auto">
         <div className="pointer-events-auto absolute right-0 top-10 hidden lg:block">
-          <Globe size={400} />
+          <LazyGlobe size={400} />
         </div>
 
         <div className="relative flex flex-col gap-8 max-w-2xl">

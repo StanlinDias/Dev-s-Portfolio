@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useReducedMotion } from "framer-motion";
 
 const LAT_BANDS = 14;
 const LON_BANDS = 24;
@@ -30,13 +29,13 @@ function buildSphere(): Point3D[][] {
 export default function Globe({ size = 420 }: { size?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
   const mouse = useRef({ x: -9999, y: -9999, active: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const wrap = wrapRef.current;
     if (!canvas || !wrap) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = size * dpr;
@@ -231,7 +230,7 @@ export default function Globe({ size = 420 }: { size?: number }) {
       wrap.removeEventListener("mousemove", handleMove);
       wrap.removeEventListener("mouseleave", handleLeave);
     };
-  }, [size, reduceMotion]);
+  }, [size]);
 
   return (
     <div

@@ -8,7 +8,7 @@ export default function PressLine() {
       <ul className="flex flex-wrap items-center gap-x-8 gap-y-3 md:justify-between flex-1">
         {press.map((outlet) => {
           const mark = (
-            <span className="font-serif italic text-xl md:text-2xl text-text/55 transition-colors duration-[180ms] hover:text-text">
+            <span className="font-serif italic text-xl md:text-2xl text-text-muted transition-colors duration-[180ms] hover:text-text">
               {outlet.name}
             </span>
           );

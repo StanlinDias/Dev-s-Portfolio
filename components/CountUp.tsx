@@ -33,7 +33,7 @@ export default function CountUp({ value, delay = 0, className = "" }: CountUpPro
       const start = performance.now();
       const dur = 900 + Math.min(parts.target, 40) * 10;
       const tick = (now: number) => {
-        const t = Math.min((now - start) / dur, 1);
+        const t = Math.max(0, Math.min((now - start) / dur, 1));
         const eased = 1 - Math.pow(1 - t, 4);
         el.textContent = String(Math.round(parts.target * eased));
         if (t < 1) raf = requestAnimationFrame(tick);
