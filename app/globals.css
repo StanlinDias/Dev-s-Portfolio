@@ -23,3 +23,218 @@ body {
   background: var(--accent);
   color: var(--bg);
 }
+
+/* ---------- Motion tokens (mirror lib/motion.ts) ---------- */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-base: 420ms;
+  --dur-slow: 700ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- Scroll reveals ----------
+   Visible by default. Only hidden once RevealObserver has mounted
+   (html.reveal-ready), then revealed once at 15% visibility. */
+.reveal-ready [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.reveal-ready [data-reveal="heading"]:not(.is-in) {
+  filter: blur(4px);
+}
+[data-reveal] {
+  transition:
+    opacity var(--dur-base) var(--ease-out-expo) var(--reveal-delay, 0ms),
+    transform var(--dur-base) var(--ease-out-expo) var(--reveal-delay, 0ms),
+    filter var(--dur-base) var(--ease-out-expo) var(--reveal-delay, 0ms);
+}
+
+/* ---------- Hero: line-by-line mask ---------- */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.mask-line > span {
+  display: block;
+  animation: mask-up var(--dur-slow) var(--ease-out-expo) both;
+  animation-delay: calc(var(--line, 0) * 120ms + 80ms);
+}
+@keyframes mask-up {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Flow diagrams ---------- */
+.flow .flow-boundary {
+  stroke-dasharray: var(--len, 4000);
+  stroke-dashoffset: 0;
+}
+.flow .flow-edge-line {
+  stroke-dasharray: var(--len, 400);
+}
+.flow .flow-edge-line.is-dashed {
+  stroke-dasharray: 4 5;
+}
+.flow .flow-particles {
+  stroke-dasharray: 2 22;
+  opacity: 0;
+}
+.reveal-ready .flow[data-reveal]:not(.is-in) {
+  opacity: 1;
+  transform: none;
+}
+.reveal-ready .flow[data-reveal]:not(.is-in) .flow-boundary {
+  stroke-dashoffset: var(--len, 4000);
+}
+.reveal-ready .flow[data-reveal]:not(.is-in) .flow-node {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.reveal-ready .flow[data-reveal]:not(.is-in) .flow-edge-line:not(.is-dashed) {
+  stroke-dashoffset: var(--len, 400);
+}
+.reveal-ready .flow[data-reveal]:not(.is-in) .flow-edge-line.is-dashed {
+  opacity: 0;
+}
+.flow .flow-boundary {
+  transition: stroke-dashoffset var(--dur-slow) var(--ease-in-out);
+}
+.flow .flow-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity var(--dur-base) var(--ease-out-expo),
+    transform var(--dur-base) var(--ease-out-expo);
+  transition-delay: calc(300ms + var(--i, 0) * 60ms);
+}
+.flow .flow-edge-line {
+  transition:
+    stroke-dashoffset var(--dur-slow) var(--ease-in-out),
+    opacity var(--dur-base) ease;
+  transition-delay: calc(600ms + var(--i, 0) * 60ms);
+}
+.flow.is-in .flow-particles,
+.flow-preview-host:hover .flow .flow-particles,
+.flow-preview-host:focus-visible .flow .flow-particles {
+  opacity: 0.55;
+  animation: flow-particles 2.4s linear infinite;
+  animation-delay: 1.4s;
+}
+.flow-preview-host:hover .flow .flow-particles,
+.flow-preview-host:focus-visible .flow .flow-particles {
+  animation-delay: 0s;
+}
+.flow.is-offscreen .flow-particles {
+  animation-play-state: paused;
+}
+@keyframes flow-particles {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+.flow-preview {
+  container-type: inline-size;
+}
+@container (max-width: 359px) {
+  .flow-preview .flow-label {
+    display: none;
+  }
+}
+
+/* ---------- Page transitions (React <ViewTransition>) ---------- */
+::view-transition-group(*) {
+  animation-duration: var(--dur-slow);
+  animation-timing-function: var(--ease-out-expo);
+}
+::view-transition-old(.page) {
+  animation: var(--dur-fast) var(--ease-in-out) both vt-fade reverse;
+}
+::view-transition-new(.page) {
+  animation:
+    var(--dur-base) var(--ease-out-expo) 60ms both vt-fade,
+    var(--dur-base) var(--ease-out-expo) 60ms both vt-rise;
+}
+::view-transition-image-pair(.morph) {
+  animation-name: vt-via-blur;
+}
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes vt-rise {
+  from {
+    transform: translateY(8px);
+  }
+}
+@keyframes vt-via-blur {
+  35% {
+    filter: blur(2px);
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-ready [data-reveal]:not(.is-in),
+  .reveal-ready [data-reveal="heading"]:not(.is-in) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  [data-reveal],
+  .flow .flow-node,
+  .flow .flow-edge-line,
+  .flow .flow-boundary {
+    transition: none !important;
+  }
+  .reveal-ready .flow[data-reveal]:not(.is-in) .flow-boundary,
+  .reveal-ready .flow[data-reveal]:not(.is-in) .flow-edge-line {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  .reveal-ready .flow[data-reveal]:not(.is-in) .flow-node {
+    opacity: 1;
+    transform: none;
+  }
+  .flow .flow-particles {
+    display: none;
+  }
+  .mask-line > span {
+    animation: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*) {
+    animation: none !important;
+  }
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: 120ms linear both vt-fade !important;
+  }
+  ::view-transition-old(*) {
+    animation-direction: reverse !important;
+  }
+}
