@@ -1,0 +1,19 @@
+name: verify-live
+on:
+  push:
+    branches: [main]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for production to serve this commit
+        run: |
+          for i in $(seq 1 40); do
+            live=$(curl -fsS "https://www.devseth.in/version.json?ts=$(date +%s)" | tr -d ' \n' || true)
+            echo "attempt $i: $live"
+            if echo "$live" | grep -q "\"commit\":\"${GITHUB_SHA}\""; then
+              echo "LIVE: production is serving ${GITHUB_SHA}"; exit 0
+            fi
+            sleep 15
+          done
+          echo "Production is not serving ${GITHUB_SHA} after 10 minutes"; exit 1
